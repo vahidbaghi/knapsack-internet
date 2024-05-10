@@ -747,5 +747,481 @@
         "price": 50000,
         "duration": 7,
         "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 5120,
+        "price": 18500,
+        "duration": 15,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 10240,
+        "price": 34000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 40960,
+        "price": 125000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 4096,
+        "price": 12000,
+        "duration": 1,
+        "timeframe": "2H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 7168,
+        "price": 29500,
+        "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 5120,
+        "price": 22600,
+        "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 2560,
+        "price": 11300,
+        "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 1024,
+        "price": 7700,
+        "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 750,
+        "price": 7300,
+        "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 650,
+        "price": 7200,
+        "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 400,
+        "price": 4200,
+        "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 250,
+        "price": 3800,
+        "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 100,
+        "price": 2400,
+        "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 2560,
+        "price": 14500,
+        "duration": 3,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 1024,
+        "price": 8000,
+        "duration": 3,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 750,
+        "price": 7800,
+        "duration": 3,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 20480,
+        "price": 86000,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 5120,
+        "price": 21500,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 3584,
+        "price": 18800,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 2560,
+        "price": 16000,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": "2560,5120",
+        "price": 26000,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 1536,
+        "price": 13200,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": "800,3072",
+        "price": 14300,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 800,
+        "price": 10100,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 550,
+        "price": 8400,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 300,
+        "price": 6000,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 200,
+        "price": 5200,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 100,
+        "price": 2600,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 5120,
+        "price": 24700,
+        "duration": 15,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 2560,
+        "price": 17400,
+        "duration": 15,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 1536,
+        "price": 13600,
+        "duration": 15,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 750,
+        "price": 10700,
+        "duration": 15,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 71680,
+        "price": 318900,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 51200,
+        "price": 227500,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": "51200,51200",
+        "price": 290000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 20480,
+        "price": 91100,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 12288,
+        "price": 45500,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": "10240,30720",
+        "price": 119000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 7168,
+        "price": 37000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": "4096,20480",
+        "price": 70000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 4096,
+        "price": 34100,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 4690,
+        "price": 25700,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 3690,
+        "price": 22700,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 2560,
+        "price": 21000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 2048,
+        "price": 21400,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 2840,
+        "price": 16900,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 1024,
+        "price": 16000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 1024,
+        "price": 12700,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 850,
+        "price": 11900,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 500,
+        "price": 7000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 20480,
+        "price": 93800,
+        "duration": 60,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 20480,
+        "price": 100500,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": "17408,40960",
+        "price": 170000,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 12288,
+        "price": 79000,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 12288,
+        "price": 64400,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": "10240,30720",
+        "price": 129000,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 10240,
+        "price": 48000,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 8192,
+        "price": 44000,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": "6144,30720",
+        "price": 112000,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 6144,
+        "price": 53400,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 6144,
+        "price": 42800,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 3072,
+        "price": 44200,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 614400,
+        "price": 324000,
+        "duration": 180,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 28672,
+        "price": 168800,
+        "duration": 180,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": "28672,61440",
+        "price": 270000,
+        "duration": 180,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 24576,
+        "price": 105800,
+        "duration": 180,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 20480,
+        "price": 120000,
+        "duration": 180,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 15360,
+        "price": 91000,
+        "duration": 180,
+        "timeframe": "24H"
     }
 ]
