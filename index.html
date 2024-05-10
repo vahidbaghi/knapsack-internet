@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="style.css">
+  <title>انتخاب بهینه بسته اینترنتی</title>
+</head>
+<body>
+  <h1>بسته های موبایل</h1>
+  <p>
+  جزئیات این کار رو میتونید در لینک مقابل بخونید : https://vahidbaghi.ir/blog/?p=606
+  </p>
+  <fieldset>
+    <legend>اپراتور : </legend>
+    <label><input type="checkbox" name="operator" value="irancell" checked>ایرانسل</label>
+    <label><input type="checkbox" name="operator" value="mci" checked>همراه اول</label>
+    <label><input type="checkbox" name="operator" value="rightel" checked>رایتل</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>مدت زمان بسته : </legend>
+    <label><input type="checkbox" name="duration" value="1" checked>۱ روزه</label>
+    <label><input type="checkbox" name="duration" value="3" checked>۳ روزه</label>
+    <label><input type="checkbox" name="duration" value="7" checked>۷ روزه</label>
+    <label><input type="checkbox" name="duration" value="15" checked>۱۵ روزه</label>
+    <label><input type="checkbox" name="duration" value="30" checked>۱ ماهه</label>
+    <label><input type="checkbox" name="duration" value="60" checked>۲ ماهه</label>
+    <label><input type="checkbox" name="duration" value="90" checked>۳ ماهه</label>
+    <label><input type="checkbox" name="duration" value="120" checked>۴ ماهه</label>
+    <label><input type="checkbox" name="duration" value="180" checked>۶ ماهه</label>
+    <label><input type="checkbox" name="duration" value="365" checked>۱۲ ماهه</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>محدوده ساعت استفاده : </legend>
+    <label><input type="checkbox" name="timeframe" value="24H" checked>۲۴ ساعته</label>
+    <label><input type="checkbox" name="timeframe" value="6AM-12PM|2AM-7AM|1AM-11AM" checked>شبانه</label>
+    <label><input type="checkbox" name="timeframe" value="24H,2AM-7AM" checked>ترکیبی</label>
+  </fieldset>
+  <div>
+    <label for="capacity">بودجه (تومان) : </label>
+    <input type="number" id="capacity" name="capacity" value="10000">
+    <button id="calculateBtn">محاسبه</button>
+  </div>
+  <ul id="packages"></ul>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
