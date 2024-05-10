@@ -17,7 +17,8 @@
     <label><input type="checkbox" name="operator" value="irancell" checked>ایرانسل</label>
     <label><input type="checkbox" name="operator" value="mci" checked>همراه اول</label>
     <label><input type="checkbox" name="operator" value="rightel" checked>رایتل</label>
-	<label><input type="checkbox" name="operator" value="shatelmobile" checked>شاتل موبایل</label>
+	<label><input type="checkbox" name="operator" value="shatelmobile" checked>شاتل موبایل (همراه)</label>
+	<label><input type="checkbox" name="operator" value="shatelmobile_adsl" checked>شاتل موبایل (همراه + ثابت)</label>
   </fieldset>
 
   <fieldset>
@@ -36,9 +37,16 @@
 
   <fieldset>
     <legend>محدوده ساعت استفاده : </legend>
-    <label><input type="checkbox" name="timeframe" value="24H" checked>۲۴ ساعته</label>
+    <label><input type="checkbox" name="timeframe" value="24H|2H" checked>۲۴ ساعته</label>
     <label><input type="checkbox" name="timeframe" value="6AM-12PM|2AM-7AM|1AM-11AM" checked>شبانه</label>
     <label><input type="checkbox" name="timeframe" value="24H,2AM-7AM" checked>ترکیبی</label>
+	<br>
+	<strong>۲۴ ساعته</strong>: در تمام ساعات شبانه‌روز قابل استفاده است و محدود به ساعت خاصی نیست.
+	<br>
+	<strong>شبانه</strong>: فقط در ساعات خاص قابل استفاده است.
+	<br>
+	<strong>ترکیبی</strong>: بخشی از حجم در طول روز و بخشی از حجم شبانه قابل استفاده است. (مخصوص رایتل)
+
   </fieldset>
   <div>
     <label for="capacity">بودجه (تومان) : </label>

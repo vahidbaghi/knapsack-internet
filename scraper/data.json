@@ -889,7 +889,7 @@
         "timeframe": "24H"
     },
     {
-        "operator": "shatelmobile",
+        "operator": "shatelmobile_adsl",
         "volume": "2560,5120",
         "price": 26000,
         "duration": 7,
@@ -903,7 +903,7 @@
         "timeframe": "24H"
     },
     {
-        "operator": "shatelmobile",
+        "operator": "shatelmobile_adsl",
         "volume": "800,3072",
         "price": 14300,
         "duration": 7,
@@ -987,7 +987,7 @@
         "timeframe": "24H"
     },
     {
-        "operator": "shatelmobile",
+        "operator": "shatelmobile_adsl",
         "volume": "51200,51200",
         "price": 290000,
         "duration": 30,
@@ -1008,7 +1008,7 @@
         "timeframe": "24H"
     },
     {
-        "operator": "shatelmobile",
+        "operator": "shatelmobile_adsl",
         "volume": "10240,30720",
         "price": 119000,
         "duration": 30,
@@ -1022,7 +1022,7 @@
         "timeframe": "24H"
     },
     {
-        "operator": "shatelmobile",
+        "operator": "shatelmobile_adsl",
         "volume": "4096,20480",
         "price": 70000,
         "duration": 30,
@@ -1113,7 +1113,7 @@
         "timeframe": "24H"
     },
     {
-        "operator": "shatelmobile",
+        "operator": "shatelmobile_adsl",
         "volume": "17408,40960",
         "price": 170000,
         "duration": 90,
@@ -1134,7 +1134,7 @@
         "timeframe": "24H"
     },
     {
-        "operator": "shatelmobile",
+        "operator": "shatelmobile_adsl",
         "volume": "10240,30720",
         "price": 129000,
         "duration": 90,
@@ -1155,7 +1155,7 @@
         "timeframe": "24H"
     },
     {
-        "operator": "shatelmobile",
+        "operator": "shatelmobile_adsl",
         "volume": "6144,30720",
         "price": 112000,
         "duration": 90,
@@ -1197,7 +1197,7 @@
         "timeframe": "24H"
     },
     {
-        "operator": "shatelmobile",
+        "operator": "shatelmobile_adsl",
         "volume": "28672,61440",
         "price": 270000,
         "duration": 180,

@@ -179,6 +179,7 @@ def get_shatelmobile_plans():
         soup = BeautifulSoup(response.content, 'html.parser')
         packages = soup.find_all("div", {"class":"col-md-4 col-xs-12 lte-pack-new pack lte-packages list-item box"})
         for package in packages:
+            operator = "shatelmobile"
              # Try to find the price in the "filter-range-info" div
             price_element = package.find("div", {"class": "filter-range-info hidden"}).find("span", {"class": "price"})
             price = price_element.text if price_element else None
@@ -199,13 +200,14 @@ def get_shatelmobile_plans():
                 if adsl_volume_match:
                     adsl_volume = int(adsl_volume_match[0])
                     package_size = f"{package_size},{adsl_volume * 1024}"
+                    operator = "shatelmobile_adsl"
 
             # Extract the duration and determine the timeframe
             duration_element = package.find('span', class_=lambda value: value and ('daily' in value or 'day' in value or 'month' in value or "hourly" in value or "weekly" in value))
             duration = duration_element.text if duration_element else None
             timeframe = "2H" if duration == "hourly" else "24H"
             shatelmobile_plans.append({
-                "operator": "shatelmobile",
+                "operator": operator,
                 "volume": package_size,
                 "price": int(price),
                 "duration": get_duration_enum(duration),
