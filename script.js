@@ -86,7 +86,7 @@ result.selectedItems.forEach(item => {
 	timeframe = details[item].timeframe;
   }
   
-  li.textContent = `اپراتور: ${details[item].operator} - ترافیک: ${volume} مگابایت - قیمت: ${details[item].price} تومان - مدت زمان: ${details[item].duration} - محدوده ساعت: ${timeframe}`;
+  li.textContent = `اپراتور: ${details[item].operator} - ترافیک: ${volume} مگابایت - قیمت: ${details[item].price} تومان - مدت زمان: ${details[item].duration} روز - محدوده ساعت: ${timeframe}`;
   packagesList.appendChild(li);
   finalPrice += details[item].price;
 });
