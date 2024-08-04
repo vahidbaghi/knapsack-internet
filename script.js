@@ -1188,7 +1188,7 @@ const data = [
     },
     {
         "operator": "shatelmobile",
-        "volume": 614400,
+        "volume": 61440,
         "price": 324000,
         "duration": 180,
         "timeframe": "24H"
