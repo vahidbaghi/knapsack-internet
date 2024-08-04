@@ -133,9 +133,9 @@ def get_rightel_plans():
     rightel_plans = []
     try:
         with sync_playwright() as p:
-            browser = p.firefox.launch(headless=True)
+            browser = p.chromium.launch(headless=True)
             page = browser.new_page()
-            page.goto(URLS['rightel'])
+            page.goto(URLS['rightel'],timeout=6e4)
             page.wait_for_load_state()
             page.evaluate('''() => {document.querySelectorAll('[style*="display: none;"]').forEach(element => {element.remove();});}''')
 

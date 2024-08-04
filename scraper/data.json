@@ -758,14 +758,14 @@
     {
         "operator": "shatelmobile",
         "volume": 10240,
-        "price": 34000,
+        "price": 36500,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "shatelmobile",
         "volume": 40960,
-        "price": 125000,
+        "price": 136000,
         "duration": 30,
         "timeframe": "24H"
     },
