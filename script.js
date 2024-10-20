@@ -481,13 +481,6 @@ const data = [
     },
     {
         "operator": "mci",
-        "volume": 8192,
-        "price": 38000,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "mci",
         "volume": 12288,
         "price": 61900,
         "duration": 60,
