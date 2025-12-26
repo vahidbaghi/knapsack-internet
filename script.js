@@ -2,66 +2,47 @@ $(document).ready(function() {
 
 $("input[type='checkbox']").checkboxradio();
 
+
 const data = [
+    // --- IRANCELL ---
     {
         "operator": "irancell",
-        "volume": 2560,
-        "price": 12600,
+        "volume": 500,
+        "price": 800,
         "duration": 1,
-        "timeframe": "24H"
+        "timeframe": "2AM-7AM"
     },
     {
         "operator": "irancell",
-        "volume": 750,
-        "price": 9000,
-        "duration": 3,
-        "timeframe": "24H"
+        "volume": 2048,
+        "price": 2412,
+        "duration": 7,
+        "timeframe": "2AM-7AM"
     },
     {
         "operator": "irancell",
         "volume": 5120,
-        "price": 24200,
+        "price": 4020,
         "duration": 7,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "irancell",
-        "volume": 7168,
-        "price": 38000,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "irancell",
-        "volume": 300,
-        "price": 7400,
-        "duration": 7,
-        "timeframe": "24H"
+        "timeframe": "2AM-7AM"
     },
     {
         "operator": "irancell",
         "volume": 4096,
-        "price": 21500,
+        "price": 7230,
         "duration": 7,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "irancell",
-        "volume": 15360,
-        "price": 83500,
-        "duration": 120,
-        "timeframe": "24H"
+        "timeframe": "6AM-12PM"
     },
     {
         "operator": "irancell",
         "volume": 10240,
-        "price": 48500,
-        "duration": 60,
-        "timeframe": "24H"
+        "price": 14470,
+        "duration": 30,
+        "timeframe": "6AM-12PM"
     },
     {
         "operator": "irancell",
-        "volume": 10240,
+        "volume": 7168,
         "price": 12060,
         "duration": 30,
         "timeframe": "6AM-12PM"
@@ -69,1159 +50,1256 @@ const data = [
     {
         "operator": "irancell",
         "volume": 30720,
-        "price": 12060,
+        "price": 14470,
         "duration": 30,
         "timeframe": "2AM-7AM"
     },
     {
         "operator": "irancell",
-        "volume": 5120,
-        "price": 3350,
-        "duration": 7,
-        "timeframe": "2AM-7AM"
+        "volume": 102400,
+        "price": 31800,
+        "duration": 30,
+        "timeframe": "1AM-11AM"
     },
     {
         "operator": "irancell",
-        "volume": 4096,
-        "price": 6030,
-        "duration": 7,
-        "timeframe": "6AM-12PM"
+        "volume": 15360,
+        "price": 99690,
+        "duration": 120,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "irancell",
+        "volume": 10240,
+        "price": 57880,
+        "duration": 60,
+        "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 7168,
-        "price": 10050,
+        "price": 45600,
         "duration": 30,
-        "timeframe": "6AM-12PM"
+        "timeframe": "24H"
     },
     {
         "operator": "irancell",
-        "volume": 2048,
-        "price": 2010,
+        "volume": 5120,
+        "price": 28940,
         "duration": 7,
-        "timeframe": "2AM-7AM"
+        "timeframe": "24H"
     },
     {
         "operator": "irancell",
-        "volume": 500,
-        "price": 670,
+        "volume": 4096,
+        "price": 25800,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "irancell",
+        "volume": 300,
+        "price": 8840,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "irancell",
+        "volume": 750,
+        "price": 10770,
+        "duration": 3,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "irancell",
+        "volume": 2560,
+        "price": 15110,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 1024,
-        "price": 14100,
+        "price": 16880,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 2048,
-        "price": 18800,
+        "price": 22510,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 3072,
-        "price": 25500,
+        "price": 30550,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 4096,
-        "price": 28600,
+        "price": 34250,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 5120,
-        "price": 31700,
+        "price": 37940,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 6144,
-        "price": 37000,
+        "price": 44400,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 400,
-        "price": 9400,
+        "price": 11250,
         "duration": 15,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 750,
-        "price": 12100,
+        "price": 14470,
         "duration": 15,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 1536,
-        "price": 15500,
+        "price": 18490,
         "duration": 15,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 2560,
-        "price": 19500,
+        "price": 23310,
         "duration": 15,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 3584,
-        "price": 22200,
+        "price": 26530,
         "duration": 15,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 5120,
-        "price": 24800,
+        "price": 29740,
         "duration": 15,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 200,
-        "price": 5900,
+        "price": 7070,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 500,
-        "price": 9400,
+        "price": 11250,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 750,
-        "price": 11200,
+        "price": 13340,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 1536,
-        "price": 14700,
+        "price": 17520,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 2560,
-        "price": 17500,
+        "price": 20900,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 60,
-        "price": 2150,
+        "price": 2457,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 100,
-        "price": 2950,
+        "price": 3530,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 200,
-        "price": 4300,
+        "price": 5140,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 300,
-        "price": 5230,
+        "price": 6270,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 400,
-        "price": 6030,
+        "price": 7230,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 750,
-        "price": 7640,
+        "price": 9160,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 1536,
-        "price": 9900,
+        "price": 11890,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 150,
-        "price": 4700,
+        "price": 5620,
         "duration": 3,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 250,
-        "price": 5900,
+        "price": 7070,
         "duration": 3,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 400,
-        "price": 7110,
+        "price": 8520,
         "duration": 3,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 1536,
-        "price": 12100,
+        "price": 14470,
         "duration": 3,
         "timeframe": "24H"
     },
     {
         "operator": "irancell",
         "volume": 2560,
-        "price": 14800,
+        "price": 17680,
         "duration": 3,
         "timeframe": "24H"
     },
+
+    // --- MCI (HAMRAH AVAL) ---
     {
         "operator": "mci",
         "volume": 60,
-        "price": 2150,
+        "price": 2450,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 150,
-        "price": 3640,
+        "price": 4330,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 250,
-        "price": 4850,
+        "price": 5780,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 500,
-        "price": 6590,
+        "price": 7870,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 750,
-        "price": 7940,
+        "price": 9480,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 1024,
-        "price": 8600,
+        "price": 10280,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 2048,
-        "price": 11300,
+        "price": 13500,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 200,
-        "price": 5900,
+        "price": 7060,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 300,
-        "price": 7400,
+        "price": 8840,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 500,
-        "price": 9400,
+        "price": 11250,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 750,
-        "price": 11200,
+        "price": 13340,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 1536,
-        "price": 14700,
+        "price": 17520,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 2548,
-        "price": 17500,
+        "price": 20900,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 4096,
-        "price": 21500,
+        "price": 25720,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 1024,
-        "price": 14100,
+        "price": 16880,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 2048,
-        "price": 18800,
+        "price": 22510,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 3072,
-        "price": 25500,
+        "price": 30550,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 4096,
-        "price": 28600,
+        "price": 34240,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 5120,
-        "price": 31700,
+        "price": 37940,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 6144,
-        "price": 37000,
+        "price": 44400,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 12288,
-        "price": 13400,
+        "price": 16080,
         "duration": 30,
         "timeframe": "6AM-12PM"
     },
     {
         "operator": "mci",
         "volume": 460800,
-        "price": 26600,
+        "price": 31990,
         "duration": 30,
         "timeframe": "1AM-11AM"
     },
     {
         "operator": "mci",
         "volume": 3072,
-        "price": 13300,
+        "price": 15900,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 6144,
-        "price": 26300,
+        "price": 31350,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
+        "volume": 8192,
+        "price": 45600,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "mci",
         "volume": 12288,
-        "price": 61900,
+        "price": 73900,
         "duration": 60,
         "timeframe": "24H"
     },
     {
         "operator": "mci",
         "volume": 15360,
-        "price": 83500,
+        "price": 99690,
         "duration": 120,
+        "timeframe": "24H"
+    },
+
+    // --- RIGHTEL ---
+    {
+        "operator": "rightel",
+        "volume": 100,
+        "price": 3240,
+        "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
-        "volume": 100,
-        "price": 2600,
-        "duration": 1,
+        "volume": 15360,
+        "price": 65000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "rightel",
+        "volume": 35840,
+        "price": 121000,
+        "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 300,
-        "price": 4900,
+        "price": 5880,
         "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "rightel",
+        "volume": 56320,
+        "price": 158000,
+        "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 500,
-        "price": 6200,
+        "price": 7440,
         "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "rightel",
+        "volume": 81920,
+        "price": 219000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "rightel",
+        "volume": 102400,
+        "price": 231000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "rightel",
+        "volume": 102400,
+        "price": 324000,
+        "duration": 90,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 1024,
-        "price": 8300,
+        "price": 9960,
         "duration": 1,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
+        "volume": 153600,
+        "price": 448000,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "rightel",
+        "volume": 256000,
+        "price": 630000,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "rightel",
         "volume": 3072,
-        "price": 12700,
+        "price": 15240,
         "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "rightel",
+        "volume": 184320,
+        "price": 504000,
+        "duration": 180,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "rightel",
+        "volume": 368640,
+        "price": 793000,
+        "duration": 180,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 150,
-        "price": 4400,
+        "price": 5280,
         "duration": 3,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "rightel",
+        "volume": 512000,
+        "price": 1310000,
+        "duration": 365,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 1024,
-        "price": 10900,
+        "price": 13080,
         "duration": 3,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
+        "volume": 737280,
+        "price": 1570000,
+        "duration": 365,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "rightel",
         "volume": 3072,
-        "price": 15900,
+        "price": 19080,
         "duration": 3,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 500,
-        "price": 9200,
+        "price": 11040,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 1024,
-        "price": 12700,
+        "price": 15240,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 3072,
-        "price": 18600,
+        "price": 22320,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 6144,
-        "price": 25300,
+        "price": 30360,
         "duration": 7,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 5120,
-        "price": 14700,
+        "price": 3600,
+        "duration": 7,
+        "timeframe": "2AM-7AM"
+    },
+    {
+        "operator": "rightel",
+        "volume": 1536,
+        "price": 17640,
         "duration": 15,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 3072,
-        "price": 21300,
+        "price": 25560,
         "duration": 15,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 5120,
-        "price": 23900,
+        "price": 28680,
         "duration": 15,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
-        "volume": "40960,5120",
-        "price": 120600,
+        "volume": 21504,
+        "price": 104400,
         "duration": 15,
-        "timeframe": "24H,2AM-7AM"
+        "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 1024,
-        "price": 13200,
+        "price": 15840,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 2048,
-        "price": 18000,
+        "price": 21600,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 3072,
-        "price": 23900,
+        "price": 28680,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 4096,
-        "price": 26600,
+        "price": 31920,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 5120,
-        "price": 29300,
+        "price": 35160,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
-        "volume": "7168,7168",
-        "price": 34700,
+        "volume": 7168,
+        "price": 43080,
         "duration": 30,
-        "timeframe": "24H,2AM-7AM"
+        "timeframe": "24H"
+    },
+    {
+        "operator": "rightel",
+        "volume": 8192,
+        "price": 47880,
+        "duration": 30,
+        "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 10240,
-        "price": 40000,
+        "price": 57480,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
-        "volume": 10240,
-        "price": 40000,
+        "volume": 14336,
+        "price": 78000,
         "duration": 30,
         "timeframe": "24H"
     },
     {
         "operator": "rightel",
-        "volume": "15360,15360",
-        "price": 66800,
+        "volume": 18432,
+        "price": 95880,
         "duration": 30,
-        "timeframe": "24H,2AM-7AM"
+        "timeframe": "24H"
     },
     {
         "operator": "rightel",
-        "volume": "22528,22528",
-        "price": 76200,
+        "volume": 24576,
+        "price": 119880,
         "duration": 30,
-        "timeframe": "24H,2AM-7AM"
+        "timeframe": "24H"
     },
     {
         "operator": "rightel",
-        "volume": "15360,10240",
-        "price": 72200,
+        "volume": 40960,
+        "price": 192000,
+        "duration": 30,
+        "timeframe": "2AM-7AM"
+    },
+    {
+        "operator": "rightel",
+        "volume": 15360,
+        "price": 180000,
+        "duration": 30,
+        "timeframe": "6AM-12PM"
+    },
+    {
+        "operator": "rightel",
+        "volume": 15360,
+        "price": 88800,
         "duration": 60,
-        "timeframe": "24H,2AM-7AM"
+        "timeframe": "24H"
     },
     {
         "operator": "rightel",
-        "volume": "20480,12288",
-        "price": 91100,
+        "volume": 20480,
+        "price": 112800,
         "duration": 60,
-        "timeframe": "24H,2AM-7AM"
+        "timeframe": "24H"
     },
     {
         "operator": "rightel",
-        "volume": "18432,12288",
-        "price": 89600,
+        "volume": 18432,
+        "price": 110400,
         "duration": 90,
-        "timeframe": "24H,2AM-7AM"
+        "timeframe": "24H"
     },
     {
         "operator": "rightel",
-        "volume": "25600,15360",
-        "price": 100500,
+        "volume": 30720,
+        "price": 168000,
         "duration": 90,
-        "timeframe": "24H,2AM-7AM"
+        "timeframe": "24H"
     },
     {
         "operator": "rightel",
-        "volume": "40960,20480",
-        "price": 150000,
+        "volume": 40960,
+        "price": 214800,
         "duration": 180,
-        "timeframe": "24H,2AM-7AM"
+        "timeframe": "24H"
     },
     {
         "operator": "rightel",
-        "volume": "56320,22528",
-        "price": 186200,
+        "volume": 61440,
+        "price": 310800,
         "duration": 180,
-        "timeframe": "24H,2AM-7AM"
+        "timeframe": "24H"
     },
     {
         "operator": "rightel",
-        "volume": "61440,30720",
-        "price": 216900,
+        "volume": 102400,
+        "price": 474000,
         "duration": 365,
-        "timeframe": "24H,2AM-7AM"
-    },
-    {
-        "operator": "rightel",
-        "volume": "102400,51200",
-        "price": 333600,
-        "duration": 365,
-        "timeframe": "24H,2AM-7AM"
+        "timeframe": "24H"
     },
     {
         "operator": "rightel",
         "volume": 215040,
-        "price": 668600,
+        "price": 957600,
+        "duration": 365,
+        "timeframe": "24H"
+    },
+
+    // --- SHATEL MOBILE ---
+    {
+        "operator": "shatelmobile",
+        "volume": 30720,
+        "price": 154000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 12288,
+        "price": 58000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 9216,
+        "price": 44000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 358400,
+        "price": 3024000,
         "duration": 365,
         "timeframe": "24H"
     },
     {
-        "operator": "rightel",
-        "volume": 70000,
-        "price": 50000,
-        "duration": 7,
+        "operator": "shatelmobile",
+        "volume": 153600,
+        "price": 1412000,
+        "duration": 365,
         "timeframe": "24H"
     },
     {
         "operator": "shatelmobile",
-        "volume": 5120,
-        "price": 18500,
-        "duration": 15,
+        "volume": 378880,
+        "price": 2664000,
+        "duration": 180,
         "timeframe": "24H"
     },
     {
         "operator": "shatelmobile",
-        "volume": 10240,
-        "price": 36500,
-        "duration": 30,
+        "volume": 189440,
+        "price": 1554000,
+        "duration": 180,
         "timeframe": "24H"
     },
     {
         "operator": "shatelmobile",
-        "volume": 40960,
-        "price": 136000,
-        "duration": 30,
+        "volume": 102400,
+        "price": 882000,
+        "duration": 180,
         "timeframe": "24H"
     },
     {
         "operator": "shatelmobile",
-        "volume": 4096,
-        "price": 12000,
-        "duration": 1,
-        "timeframe": "2H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 7168,
-        "price": 29500,
-        "duration": 1,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 5120,
-        "price": 22600,
-        "duration": 1,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 2560,
-        "price": 11300,
-        "duration": 1,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 1024,
-        "price": 7700,
-        "duration": 1,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 750,
-        "price": 7300,
-        "duration": 1,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 650,
-        "price": 7200,
-        "duration": 1,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 400,
-        "price": 4200,
-        "duration": 1,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 250,
-        "price": 3800,
-        "duration": 1,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 100,
-        "price": 2400,
-        "duration": 1,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 2560,
-        "price": 14500,
-        "duration": 3,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 1024,
-        "price": 8000,
-        "duration": 3,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 750,
-        "price": 7800,
-        "duration": 3,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 20480,
-        "price": 86000,
-        "duration": 7,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 5120,
-        "price": 21500,
-        "duration": 7,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 3584,
-        "price": 18800,
-        "duration": 7,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 2560,
-        "price": 16000,
-        "duration": 7,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile_adsl",
-        "volume": "2560,5120",
-        "price": 26000,
-        "duration": 7,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 1536,
-        "price": 13200,
-        "duration": 7,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile_adsl",
-        "volume": "800,3072",
-        "price": 14300,
-        "duration": 7,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 800,
-        "price": 10100,
-        "duration": 7,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 550,
-        "price": 8400,
-        "duration": 7,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 300,
-        "price": 6000,
-        "duration": 7,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 200,
-        "price": 5200,
-        "duration": 7,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 100,
-        "price": 2600,
-        "duration": 7,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 5120,
-        "price": 24700,
-        "duration": 15,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 2560,
-        "price": 17400,
-        "duration": 15,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 1536,
-        "price": 13600,
-        "duration": 15,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 750,
-        "price": 10700,
-        "duration": 15,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 71680,
-        "price": 318900,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 51200,
-        "price": 227500,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile_adsl",
-        "volume": "51200,51200",
-        "price": 290000,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 20480,
-        "price": 91100,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 12288,
-        "price": 45500,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile_adsl",
-        "volume": "10240,30720",
-        "price": 119000,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 7168,
-        "price": 37000,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile_adsl",
-        "volume": "4096,20480",
-        "price": 70000,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 4096,
-        "price": 34100,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 4690,
-        "price": 25700,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 3690,
-        "price": 22700,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 2560,
-        "price": 21000,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 2048,
-        "price": 21400,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 2840,
-        "price": 16900,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 1024,
-        "price": 16000,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 1024,
-        "price": 12700,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 850,
-        "price": 11900,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 500,
-        "price": 7000,
-        "duration": 30,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 20480,
-        "price": 93800,
-        "duration": 60,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 20480,
-        "price": 100500,
-        "duration": 90,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile_adsl",
-        "volume": "17408,40960",
-        "price": 170000,
-        "duration": 90,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 12288,
-        "price": 79000,
-        "duration": 90,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 12288,
-        "price": 64400,
-        "duration": 90,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile_adsl",
-        "volume": "10240,30720",
-        "price": 129000,
-        "duration": 90,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 10240,
-        "price": 48000,
-        "duration": 90,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 8192,
-        "price": 44000,
-        "duration": 90,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile_adsl",
-        "volume": "6144,30720",
-        "price": 112000,
-        "duration": 90,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 6144,
-        "price": 53400,
-        "duration": 90,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 6144,
-        "price": 42800,
-        "duration": 90,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile",
-        "volume": 3072,
-        "price": 44200,
-        "duration": 90,
+        "volume": 76800,
+        "price": 670800,
+        "duration": 180,
         "timeframe": "24H"
     },
     {
         "operator": "shatelmobile",
         "volume": 61440,
-        "price": 324000,
+        "price": 388800,
+        "duration": 180,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 35840,
+        "price": 322800,
         "duration": 180,
         "timeframe": "24H"
     },
     {
         "operator": "shatelmobile",
         "volume": 28672,
-        "price": 168800,
-        "duration": 180,
-        "timeframe": "24H"
-    },
-    {
-        "operator": "shatelmobile_adsl",
-        "volume": "28672,61440",
-        "price": 270000,
+        "price": 202500,
         "duration": 180,
         "timeframe": "24H"
     },
     {
         "operator": "shatelmobile",
         "volume": 24576,
-        "price": 105800,
+        "price": 126900,
         "duration": 180,
         "timeframe": "24H"
     },
     {
         "operator": "shatelmobile",
         "volume": 20480,
-        "price": 120000,
+        "price": 144000,
         "duration": 180,
         "timeframe": "24H"
     },
     {
         "operator": "shatelmobile",
         "volume": 15360,
-        "price": 91000,
+        "price": 109200,
         "duration": 180,
         "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 363520,
+        "price": 2388000,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 102400,
+        "price": 718800,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 66560,
+        "price": 477600,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 35840,
+        "price": 262800,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 20480,
+        "price": 120600,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 12288,
+        "price": 77280,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 8192,
+        "price": 52800,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 6144,
+        "price": 51360,
+        "duration": 90,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 40960,
+        "price": 235200,
+        "duration": 60,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 20480,
+        "price": 112500,
+        "duration": 60,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 71680,
+        "price": 382600,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 56320,
+        "price": 306000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 51200,
+        "price": 273000,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 20480,
+        "price": 109300,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 12288,
+        "price": 68280,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 10240,
+        "price": 54600,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 7168,
+        "price": 44400,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 4096,
+        "price": 32280,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 3072,
+        "price": 28680,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 2560,
+        "price": 25200,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 2048,
+        "price": 20280,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 1024,
+        "price": 15240,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 500,
+        "price": 8400,
+        "duration": 30,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 15360,
+        "price": 90000,
+        "duration": 15,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 7168,
+        "price": 43200,
+        "duration": 15,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 5120,
+        "price": 29640,
+        "duration": 15,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 2560,
+        "price": 20880,
+        "duration": 15,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 1536,
+        "price": 16320,
+        "duration": 15,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 750,
+        "price": 12800,
+        "duration": 15,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 20480,
+        "price": 103200,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 7168,
+        "price": 42000,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 4096,
+        "price": 25800,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 3584,
+        "price": 22560,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 2560,
+        "price": 19200,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 1536,
+        "price": 15840,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 800,
+        "price": 12120,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 550,
+        "price": 10080,
+        "duration": 7,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 5120,
+        "price": 30000,
+        "duration": 3,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 2560,
+        "price": 17400,
+        "duration": 3,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 1024,
+        "price": 12200,
+        "duration": 3,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 750,
+        "price": 9360,
+        "duration": 3,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 7168,
+        "price": 35400,
+        "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 5120,
+        "price": 26400,
+        "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 2560,
+        "price": 13560,
+        "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 1024,
+        "price": 9240,
+        "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 750,
+        "price": 8760,
+        "duration": 1,
+        "timeframe": "24H"
+    },
+    {
+        "operator": "shatelmobile",
+        "volume": 400,
+        "price": 6240,
+        "duration": 1,
+        "timeframe": "24H"
     }
-]
+];
 
 
 function knapsack(weights, values, capacity) {
