@@ -1,240 +1,233 @@
+"""
+Scrape the internet packages of Irancell, MCI (Hamrah Aval), Rightel and Shatel Mobile
+and write them to ../data.json, which the page loads.
+
+    pip install requests beautifulsoup4
+    python scraper.py            # fetch from the operators and write ../data.json
+    python scraper.py --offline  # rebuild from the pages saved in raw/ by the last run
+
+Only works from an Iranian IP (the operator sites block foreign traffic).
+
+Every package in data.json looks like this:
+    op        irancell | mci | rightel | shatel
+    mb        volume usable at any hour (MB)
+    night_mb  volume usable only at special hours (MB), with `window` naming the hours
+    fixed_mb  home internet volume that comes with the package (MB, Shatel combos only)
+    days      validity in days (0 = a few hours, see `note`)
+    price     toman
+    note      short extra info shown under the package
+"""
+import json
 import os
 import re
-import json
-import random
-import time
+import sys
+from datetime import date
+
 import requests
+import urllib3
 from bs4 import BeautifulSoup
-from playwright.sync_api import sync_playwright
+
+urllib3.disable_warnings()
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+RAW = os.path.join(HERE, 'raw')
+OUT = os.path.join(HERE, '..', 'data.json')
+UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+                    '(KHTML, like Gecko) Chrome/140.0 Safari/537.36'}
 
 URLS = {
-    'mci': 'https://mci.ir/internet-plans',
     'irancell': 'https://irancell.ir/e/products/5e16bf95d11fd7209ba56b20',
-    'rightel': 'https://package.rightel.ir/ExtraPackageSales/ProductListToSales/ShowProduct',
-    'shatelmobile': 'https://shatelmobile.ir/plans-tariffs/internet-packages/'
+    'mci': 'https://mci.ir/internet-plans',
+    'rightel_auth': 'https://portal-api.rightel.ir/user-management/api/v1/auth/authenticate',
+    'rightel': 'https://portal-api.rightel.ir/extra-package/api/v1/extra-package-direct/web-site/purchasable-package',
+    'shatel': 'https://shatelmobile.ir/plans-tariffs/internet-packages/',
 }
+RAW_FILES = {'irancell': 'irancell.html', 'mci': 'mci.html', 'rightel': 'rightel_pkgs.json', 'shatel': 'shatel.html'}
 
-# Function to get random user agent
-def get_random_user_agent():
-    user_agents = [
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299',
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898',
-    ]
-    return random.choice(user_agents)
+FA_DIGITS = str.maketrans('۰۱۲۳۴۵۶۷۸۹', '0123456789')
+EN_DIGITS = str.maketrans('0123456789', '۰۱۲۳۴۵۶۷۸۹')
 
-# Function to get duration enum
-def get_duration_enum(duration):
-    durations = {
-        "180days": 180, "six-months": 180, "۶ماهه": 180, "۶ ماهه": 180, "6month":180,
-        "120days": 120, "four-months": 120,
-        "90days": 90, "three-months": 90, "۳ماهه": 90, "۳ ماهه": 90, "3month":90,
-        "3days": 3, "۳روزه": 3, "۳ روزه": 3, "3day":3,
-        "30days": 30, "thirty-days": 30, "۱ماهه": 30, "۱ ماهه": 30, "monthly":30,
-        "daily": 1, "one-day": 1, "۱روزه": 1, "۱ روزه": 1, "hourly":1,
-        "7days": 7, "seven-days": 7, "۷روزه": 7, "۷ روزه": 7, "weekly": 7,
-        "60days": 60, "two-months": 60, "۲ماهه": 60, "۲ ماهه": 60, "2month":60,
-        "15days": 15, "۱۵روزه": 15, "۱۵ روزه": 15, "15day":15,
-        "۱ساله": 365, "۱ ساله": 365
-    }
-    return durations.get(duration, 0)
 
-# Function to get timeframe
-def get_timeframe(description):
-    timeframes = {
-        "6 صبح تا 12 ظهر": "6AM-12PM",
-        "sobhanet": "6AM-12PM",
-        "2 تا 7 صبح": "2AM-7AM",
-        "unlimited-mci": "1AM-11AM"
-    }
-    return timeframes.get(description, "24H")
+def fa2en(s):
+    return s.translate(FA_DIGITS)
 
-# Function to scrape MCI plans
-def get_mci_plans():
-    mci_plans = []
-    try:
-        response = requests.get(URLS['mci'], headers={'User-Agent': get_random_user_agent()}, verify=False)
-        response.raise_for_status()  # Raise an exception if the request was unsuccessful
-        soup = BeautifulSoup(response.content, 'html.parser')
-        rows = soup.find("ul", {"id": "alphaPlusPackageList"}).find_all("li", {"class": "package-list-item"})
-        for plan in rows:
-            # If the internet package is for new subscribers, it will be skipped
-            if "new-sub" in plan.attrs["class"]:
-                continue
-            package_type = plan["data-package-type"]
-            if package_type == "sobhanet":
-                description = get_timeframe("sobhanet")
-                mci_plans.append({
-                    "operator": "mci",
-                    "volume": int(plan["data-volume"]),
-                    "price": int(plan["data-price"]),
-                    "duration": 30,
-                    "timeframe": description
-                })
-            elif package_type == "unlimited":
-                description = get_timeframe("unlimited-mci")
-                mci_plans.append({
-                    "operator": "mci",
-                    "volume": int(plan["data-fair-volume"]),
-                    "price": int(plan["data-price"]),
-                    "duration": 30,
-                    "timeframe": description
-                })
-            else:
-                volume = int(plan["data-volume"])
-                price = int(plan["data-price"])
-                duration = get_duration_enum(plan["data-duration"].replace("unsorted-", ""))
-                mci_plans.append({
-                    "operator": "mci",
-                    "volume": volume,
-                    "price": price,
-                    "duration": duration,
-                    "timeframe": "24H"
-                })
-    except requests.exceptions.RequestException as e:
-        print(f"Error scraping MCI plans: {e}")
-    return mci_plans
 
-# Function to scrape IranCell plans
-def get_irancell_plans():
-    irancell_plans = []
-    try:
-        response = requests.get(URLS['irancell'], headers={'User-Agent': get_random_user_agent()})
-        response.raise_for_status()
-        packages = response.json()
-        for package in packages:
-            volume = int(package["specification_contents"][2]["desc"].get("fa", 0.0) or package["specification_contents"][2]["desc"].get("en", 0.0))
-            price = int(package["price"])
-            duration = get_duration_enum(package["specification_contents"][1]["value"])
-            timeframe = get_timeframe(package["sub_title"]["fa"])
-            irancell_plans.append({
-                "operator": "irancell",
-                "volume": volume,
-                "price": price,
-                "duration": duration,
-                "timeframe": timeframe
-            })
-    except requests.exceptions.RequestException as e:
-        print(f"Error scraping IranCell plans: {e}")
-    return irancell_plans
+def fa_num(s):
+    return str(s).translate(EN_DIGITS)
 
-# Function to scrape RighTel plans
-def get_rightel_plans():
-    def get_volume_value(volume_str):
-        if 'گیگابایت' in volume_str:
-            volume = int(volume_str.replace('گیگابایت', "").strip())
-            volume *= 1024
-        elif 'مگابایت' in volume_str:
-            volume = int(volume_str.replace('مگابایت', "").strip())
+
+def to_mb(num, unit):
+    v = float(num)
+    return int(round(v * 1024)) if unit in ('گیگابایت', 'GB') else int(round(v))
+
+
+def pkg(op, price, days, mb=0, night_mb=0, window=None, fixed_mb=0, note=''):
+    p = {'op': op, 'mb': mb, 'night_mb': night_mb, 'fixed_mb': fixed_mb, 'days': days, 'price': int(price)}
+    if window:
+        p['window'] = window
+    if note:
+        p['note'] = note
+    return p
+
+
+def fetch(name, offline):
+    path = os.path.join(RAW, RAW_FILES[name])
+    if offline:
+        with open(path, encoding='utf-8') as f:
+            return f.read()
+    if name == 'rightel':
+        h = {**UA, 'Origin': 'https://package.rightel.ir', 'Referer': 'https://package.rightel.ir/'}
+        # the package site logs in as the public "website" user and sends that token along
+        tok = requests.post(URLS['rightel_auth'], json={'username': 'website'}, headers=h, timeout=60).json()['data']['token']
+        r = requests.get(URLS['rightel'], headers={**h, 'Authorization': 'Bearer ' + tok}, timeout=60)
+    else:
+        r = requests.get(URLS[name], headers=UA, timeout=60, verify=(name != 'mci'))
+    r.raise_for_status()
+    r.encoding = 'utf-8'
+    os.makedirs(RAW, exist_ok=True)
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(r.text)
+    return r.text
+
+
+# ---------------------------------------------------------------- Irancell
+IRANCELL_DAYS = {'daily': 1, '3days': 3, '7days': 7, '10days': 10, '14days': 14, '15days': 15, '30days': 30,
+                 '60days': 60, '90days': 90, '120days': 120, '180days': 180, '365days': 365}
+
+
+def irancell(text, skipped):
+    out = []
+    for p in json.loads(text):
+        spec = {s['key']: s for s in p['specification_contents']}
+        name = fa2en(p['name']['fa'].strip())
+        mb = int(spec['traffic']['desc']['fa'] or 0)
+        days = IRANCELL_DAYS.get(spec['package_type']['value'])
+        if not mb or days is None:
+            skipped.append(('irancell', name, 'no fixed volume'))
+            continue
+        if 'جمعه' in p['sub_title']['fa']:
+            skipped.append(('irancell', name, 'only sold on Fridays'))
+            continue
+        m = re.match(r'(\d+)(MB|GB)\+(\d+)GB \(2-7AM\)', p['name']['en'])
+        if m:
+            assert to_mb(m.group(1), m.group(2)) == mb, name
+            out.append(pkg('irancell', p['price'], days, mb=mb, night_mb=to_mb(m.group(3), 'GB'), window='2-7'))
         else:
-            volume = 0
-        return volume
-
-    rightel_plans = []
-    try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto(URLS['rightel'],timeout=6e4)
-            page.wait_for_load_state()
-            page.evaluate('''() => {document.querySelectorAll('[style*="display: none;"]').forEach(element => {element.remove();});}''')
-
-            prices = re.findall(r'data-price="(\d+)"', page.content())[::2]
-            volumes = re.findall(r'<h2>.*?(\d+ (?:گیگابایت|مگابایت))(?: \+ (\d+ گیگابایت) هدیه شبانه)?', page.content())[::2]
-            durations = re.findall(r'<h2>.*?(\d+ ?(?:روزه|ماهه|ساله))', page.content())[::2]
-
-            for price, volume, duration in zip(prices, volumes, durations):
-                if volume[1]:
-                    final_volume = "{},{}".format(get_volume_value(volume[0]), get_volume_value(volume[1]))
-                else:
-                    final_volume = get_volume_value(volume[0])
-
-                timeframe = "24H,2AM-7AM" if volume[1] else "24H"
-                rightel_plans.append({
-                    "operator": "rightel",
-                    "volume": final_volume,
-                    "price": int(int(price) / 10),
-                    "duration": get_duration_enum(duration),
-                    "timeframe": timeframe
-                })
-
-        # Add a special RighTel plan
-        rightel_plans.append({
-            "operator": "rightel",
-            "volume": 70000,
-            "price": 50000,
-            "duration": 7,
-            "timeframe": "24H"
-        })
-    except Exception as e:
-        print(f"Error scraping RighTel plans: {e}")
-    return rightel_plans
+            out.append(pkg('irancell', p['price'], days, mb=mb))
+    return out
 
 
-def get_shatelmobile_plans():
-    shatelmobile_plans = []
-    try:
-        response = requests.get(URLS['shatelmobile'], headers={'User-Agent': get_random_user_agent()})
-        response.raise_for_status()
-        soup = BeautifulSoup(response.content, 'html.parser')
-        packages = soup.find_all("div", {"class":"col-md-4 col-xs-12 lte-pack-new pack lte-packages list-item box"})
-        for package in packages:
-            operator = "shatelmobile"
-             # Try to find the price in the "filter-range-info" div
-            price_element = package.find("div", {"class": "filter-range-info hidden"}).find("span", {"class": "price"})
-            price = price_element.text if price_element else None
+# ---------------------------------------------------------------- MCI
+MCI_DAYS = {'one-day': 1, 'three-days': 3, 'seven-days': 7, 'fifteen-days': 15, 'thirty-days': 30,
+            'two-months': 60, 'three-months': 90, 'four-months': 120, 'six-months': 180, 'unlimited-monthly': 30}
 
-            # If the price is not found, look for it in the "lte2-price" div
-            if not price:
-                price_text = package.find("div", {"class": "lte2-price"}).text
-                price = price_text.replace("تومان", "").replace("،", "").strip()
 
-            # Extract the package size
-            package_size_element = package.find('span', class_='package_size')
-            package_size = int(package_size_element.text) if package_size_element else None
+def mci(text, skipped):
+    out = []
+    soup = BeautifulSoup(text, 'html.parser')
+    for li in soup.find('ul', {'id': 'alphaPlusPackageList'}).find_all('li', {'class': 'package-list-item'}):
+        kind, price = li['data-package-type'], int(li['data-price'])
+        days = MCI_DAYS[li['data-duration']]
+        txt = ' '.join(li.get_text(' ').split())
+        if kind == 'new-sub':
+            skipped.append(('mci', li['data-volume'], 'new subscribers only'))
+        elif kind == 'sobhanet':
+            out.append(pkg('mci', price, days, night_mb=int(li['data-volume']), window='6-12', note='صبحانت'))
+        elif kind == 'unlimited':
+            m = re.search(r'(\d+) بامداد تا (\d+) صبح', txt)
+            fair = re.search(r'بالای (\d+) گیگابایت', txt)
+            # "unlimited" slows down past the fair-use cap, so the cap is what we count
+            out.append(pkg('mci', price, days, night_mb=to_mb(fair.group(1), 'GB'), window=f'{m.group(1)}-{m.group(2)}',
+                           note=f'نامحدود، بالای {fa_num(fair.group(1))} گیگ سرعت کم میشه'))
+        else:
+            mb = int(li['data-volume'])
+            if mb == 2548:  # typo on the site, the text says 2.5 GB
+                mb = 2560
+            out.append(pkg('mci', price, days, mb=mb))
+    return out
 
-            # Check if the package is a combo package
-            combo_package = package.find("span", {"class": "combo-two"})
-            if combo_package:
-                adsl_volume_match = re.findall(r'(\d+) گیگابایت ثابت', package.text)
-                if adsl_volume_match:
-                    adsl_volume = int(adsl_volume_match[0])
-                    package_size = f"{package_size},{adsl_volume * 1024}"
-                    operator = "shatelmobile_adsl"
 
-            # Extract the duration and determine the timeframe
-            duration_element = package.find('span', class_=lambda value: value and ('daily' in value or 'day' in value or 'month' in value or "hourly" in value or "weekly" in value))
-            duration = duration_element.text if duration_element else None
-            timeframe = "2H" if duration == "hourly" else "24H"
-            shatelmobile_plans.append({
-                "operator": operator,
-                "volume": package_size,
-                "price": int(price),
-                "duration": get_duration_enum(duration),
-                "timeframe": timeframe
-            })
-    except Exception as e:
-        print(f"Error scraping shatelmobile plans: {e}")   
-    return shatelmobile_plans
+# ---------------------------------------------------------------- Rightel
+def rightel(text, skipped):
+    out, seen = [], set()
+    for it in json.loads(text)['data']:
+        p = it['purchasablePackage']
+        cats = {c['channelCategoryNameEn'] for c in it['channelCategories']}
+        name = fa2en(p['purchasablePackageNameFa'].strip())
+        if 'internet' not in cats:
+            if cats & {'Modem', 'Hybrid'}:
+                skipped.append(('rightel', name, '/'.join(cats)))
+            continue
+        vol = re.search(r'(\d+(?:\.\d+)?)\s*(گیگابایت|مگابایت)', name)
+        dur = re.search(r'(\d+)\s*(روزه|ماهه|ساله)', name)
+        days = int(dur.group(1)) * {'روزه': 1, 'ماهه': 30, 'ساله': 365}[dur.group(2)]
+        mb = to_mb(vol.group(1), vol.group(2))
+        desc = fa2en(p['descriptionFa'] or '')
+        hours = re.search(r'(\d+)\s*(?:صبح\s*)?الی\s*(\d+)', desc)
+        price = p['packagePrice'] // 10  # rial -> toman
+        key = (name, price, desc)
+        if key in seen:  # every package is listed twice, once for prepaid and once for postpaid
+            continue
+        seen.add(key)
+        if hours:
+            out.append(pkg('rightel', price, days, night_mb=mb, window=f'{hours.group(1)}-{hours.group(2)}'))
+        else:
+            assert not desc.strip(), desc
+            out.append(pkg('rightel', price, days, mb=mb))
+    return out
 
-# Main function
+
+# ---------------------------------------------------------------- Shatel Mobile
+SHATEL_DAYS = {'hourly': 0, 'daily': 1, '3day': 3, 'weekly': 7, '15day': 15, 'monthly': 30, '2month': 60,
+               '3month': 90, '6month': 180, 'annual': 365}
+
+
+def shatel(text, skipped):
+    out = []
+    soup = BeautifulSoup(text, 'html.parser')
+    for box in soup.select('div.lte-pack-new.pack.lte-packages.list-item.box'):
+        info = box.find('div', {'class': 'filter-range-info'})
+        tags = [s.get('class', [''])[0] for s in info.find_all('span')]
+        # the hidden "package_size" field has typos, the visible text is right
+        inc = fa2en(' '.join(box.find('div', {'class': 'lte2-includes'}).get_text(' ').split()))
+        price = int(re.sub(r'\D', '', fa2en(box.find('div', {'class': 'lte2-price'}).get_text())))
+        days = SHATEL_DAYS[next(t for t in tags if t in SHATEL_DAYS)]
+        m = re.match(r'(\d+(?:\.\d+)?)\s*(گیگابایت|مگابایت)', inc)
+        if not m:
+            skipped.append(('shatel', inc, 'no internet volume'))
+            continue
+        fixed = re.search(r'(\d+)\s*گیگابایت ثابت', inc)
+        notes = []
+        if days == 0:
+            hrs = re.search(r'(\d+)\s*ساعته', fa2en(box.find('div', {'class': 'lte2-title'}).get_text()))
+            notes.append(f'{fa_num(hrs.group(1))} ساعته')
+        if 'مکالمه' in inc:
+            notes.append('همراه با مکالمه' + (' و پیامک' if 'پیامک' in inc else ''))
+        if 'ماهانه' in inc:
+            notes.append('حجم ماه به ماه تقسیم میشه')
+        if 'promotion' in tags:
+            notes.append('پیشنهاد ویژه')
+        out.append(pkg('shatel', price, days, mb=to_mb(m.group(1), m.group(2)),
+                       fixed_mb=to_mb(fixed.group(1), 'GB') if fixed else 0, note='، '.join(notes)))
+    return out
+
+
 def main():
-    try:
-        shatelmobile_plans = get_shatelmobile_plans()
-        irancell_plans = get_irancell_plans()
-        mci_plans = get_mci_plans()
-        rightel_plans = get_rightel_plans()
+    offline = '--offline' in sys.argv
+    skipped, packages, counts = [], [], {}
+    for name, parse in [('irancell', irancell), ('mci', mci), ('rightel', rightel), ('shatel', shatel)]:
+        got = parse(fetch(name, offline), skipped)
+        if not got:
+            sys.exit(f'{name}: no packages found, the site has probably changed. data.json was not touched.')
+        counts[name] = len(got)
+        packages += got
+    with open(OUT, 'w', encoding='utf-8') as f:
+        json.dump({'updated': date.today().isoformat(), 'packages': packages}, f, ensure_ascii=False, indent=1)
+    print('packages:', counts)
+    print('skipped:')
+    for s in skipped:
+        print('  ', *s)
 
-        data = irancell_plans + mci_plans + rightel_plans + shatelmobile_plans
 
-        # Save data to JSON file
-        output_file = "data.json"
-        with open(output_file, 'w', encoding='utf-8') as json_file:
-            json.dump(data, json_file, ensure_ascii=False, indent=4)
-        print(f"Data saved to {output_file}")
-    except Exception as e:
-        print(f"An error occurred: {e}")
-
-# Call the main function
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

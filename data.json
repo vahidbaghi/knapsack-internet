@@ -1,0 +1,1556 @@
+{
+ "updated": "2026-09-23",
+ "packages": [
+  {
+   "op": "irancell",
+   "mb": 500,
+   "night_mb": 1024,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 12000,
+   "window": "2-7"
+  },
+  {
+   "op": "irancell",
+   "mb": 2048,
+   "night_mb": 4096,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 31000,
+   "window": "2-7"
+  },
+  {
+   "op": "irancell",
+   "mb": 4096,
+   "night_mb": 8192,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 49000,
+   "window": "2-7"
+  },
+  {
+   "op": "irancell",
+   "mb": 750,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 12700
+  },
+  {
+   "op": "irancell",
+   "mb": 300,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 10430
+  },
+  {
+   "op": "irancell",
+   "mb": 4096,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 30440
+  },
+  {
+   "op": "irancell",
+   "mb": 51200,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 383500
+  },
+  {
+   "op": "irancell",
+   "mb": 46080,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 345800
+  },
+  {
+   "op": "irancell",
+   "mb": 61440,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 460500
+  },
+  {
+   "op": "irancell",
+   "mb": 81920,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 613500
+  },
+  {
+   "op": "irancell",
+   "mb": 102400,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 120,
+   "price": 755000
+  },
+  {
+   "op": "irancell",
+   "mb": 1024,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 19910
+  },
+  {
+   "op": "irancell",
+   "mb": 2048,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 26560
+  },
+  {
+   "op": "irancell",
+   "mb": 3072,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 36040
+  },
+  {
+   "op": "irancell",
+   "mb": 4096,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 40410
+  },
+  {
+   "op": "irancell",
+   "mb": 5120,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 44760
+  },
+  {
+   "op": "irancell",
+   "mb": 6144,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 52390
+  },
+  {
+   "op": "irancell",
+   "mb": 400,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 13270
+  },
+  {
+   "op": "irancell",
+   "mb": 750,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 17070
+  },
+  {
+   "op": "irancell",
+   "mb": 1536,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 21810
+  },
+  {
+   "op": "irancell",
+   "mb": 2560,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 27500
+  },
+  {
+   "op": "irancell",
+   "mb": 3584,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 31300
+  },
+  {
+   "op": "irancell",
+   "mb": 200,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 8190
+  },
+  {
+   "op": "irancell",
+   "mb": 500,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 13270
+  },
+  {
+   "op": "irancell",
+   "mb": 750,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 15740
+  },
+  {
+   "op": "irancell",
+   "mb": 1536,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 20670
+  },
+  {
+   "op": "irancell",
+   "mb": 2560,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 24660
+  },
+  {
+   "op": "irancell",
+   "mb": 60,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 2457
+  },
+  {
+   "op": "irancell",
+   "mb": 100,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 4090
+  },
+  {
+   "op": "irancell",
+   "mb": 200,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 6060
+  },
+  {
+   "op": "irancell",
+   "mb": 300,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 7390
+  },
+  {
+   "op": "irancell",
+   "mb": 400,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 8530
+  },
+  {
+   "op": "irancell",
+   "mb": 750,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 10800
+  },
+  {
+   "op": "irancell",
+   "mb": 1536,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 14030
+  },
+  {
+   "op": "irancell",
+   "mb": 150,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 6140
+  },
+  {
+   "op": "irancell",
+   "mb": 250,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 8340
+  },
+  {
+   "op": "irancell",
+   "mb": 400,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 10050
+  },
+  {
+   "op": "irancell",
+   "mb": 1536,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 17070
+  },
+  {
+   "op": "irancell",
+   "mb": 2560,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 20860
+  },
+  {
+   "op": "mci",
+   "mb": 60,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 2450
+  },
+  {
+   "op": "mci",
+   "mb": 150,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 5100
+  },
+  {
+   "op": "mci",
+   "mb": 250,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 6820
+  },
+  {
+   "op": "mci",
+   "mb": 500,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 9280
+  },
+  {
+   "op": "mci",
+   "mb": 750,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 11180
+  },
+  {
+   "op": "mci",
+   "mb": 1024,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 12130
+  },
+  {
+   "op": "mci",
+   "mb": 2048,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 15930
+  },
+  {
+   "op": "mci",
+   "mb": 150,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 6120
+  },
+  {
+   "op": "mci",
+   "mb": 250,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 8340
+  },
+  {
+   "op": "mci",
+   "mb": 400,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 10050
+  },
+  {
+   "op": "mci",
+   "mb": 750,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 12700
+  },
+  {
+   "op": "mci",
+   "mb": 1536,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 17070
+  },
+  {
+   "op": "mci",
+   "mb": 200,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 8190
+  },
+  {
+   "op": "mci",
+   "mb": 300,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 10420
+  },
+  {
+   "op": "mci",
+   "mb": 500,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 13270
+  },
+  {
+   "op": "mci",
+   "mb": 750,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 15720
+  },
+  {
+   "op": "mci",
+   "mb": 1536,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 20670
+  },
+  {
+   "op": "mci",
+   "mb": 2560,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 24660
+  },
+  {
+   "op": "mci",
+   "mb": 4096,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 30340
+  },
+  {
+   "op": "mci",
+   "mb": 750,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 17070
+  },
+  {
+   "op": "mci",
+   "mb": 1536,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 21810
+  },
+  {
+   "op": "mci",
+   "mb": 2560,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 27500
+  },
+  {
+   "op": "mci",
+   "mb": 3584,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 31300
+  },
+  {
+   "op": "mci",
+   "mb": 1024,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 19910
+  },
+  {
+   "op": "mci",
+   "mb": 2048,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 26560
+  },
+  {
+   "op": "mci",
+   "mb": 3072,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 36040
+  },
+  {
+   "op": "mci",
+   "mb": 4096,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 40400
+  },
+  {
+   "op": "mci",
+   "mb": 5120,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 44760
+  },
+  {
+   "op": "mci",
+   "mb": 6144,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 52390
+  },
+  {
+   "op": "mci",
+   "mb": 51200,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 383500
+  },
+  {
+   "op": "mci",
+   "mb": 0,
+   "night_mb": 12288,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 18970,
+   "window": "6-12",
+   "note": "صبحانت"
+  },
+  {
+   "op": "mci",
+   "mb": 0,
+   "night_mb": 81920,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 37740,
+   "window": "2-7",
+   "note": "نامحدود، بالای ۸۰ گیگ سرعت کم میشه"
+  },
+  {
+   "op": "mci",
+   "mb": 46080,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 345800
+  },
+  {
+   "op": "mci",
+   "mb": 61440,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 460500
+  },
+  {
+   "op": "mci",
+   "mb": 81920,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 613500
+  },
+  {
+   "op": "mci",
+   "mb": 102400,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 120,
+   "price": 755000
+  },
+  {
+   "op": "rightel",
+   "mb": 100,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 3820
+  },
+  {
+   "op": "rightel",
+   "mb": 300,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 6930
+  },
+  {
+   "op": "rightel",
+   "mb": 500,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 8770
+  },
+  {
+   "op": "rightel",
+   "mb": 1024,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 11750
+  },
+  {
+   "op": "rightel",
+   "mb": 3072,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 17980
+  },
+  {
+   "op": "rightel",
+   "mb": 150,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 6140
+  },
+  {
+   "op": "rightel",
+   "mb": 1024,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 15430
+  },
+  {
+   "op": "rightel",
+   "mb": 3072,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 22510
+  },
+  {
+   "op": "rightel",
+   "mb": 500,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 13020
+  },
+  {
+   "op": "rightel",
+   "mb": 1024,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 17980
+  },
+  {
+   "op": "rightel",
+   "mb": 3072,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 26330
+  },
+  {
+   "op": "rightel",
+   "mb": 6144,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 35820
+  },
+  {
+   "op": "rightel",
+   "mb": 1536,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 20810
+  },
+  {
+   "op": "rightel",
+   "mb": 3072,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 30160
+  },
+  {
+   "op": "rightel",
+   "mb": 5120,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 33840
+  },
+  {
+   "op": "rightel",
+   "mb": 15360,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 90000
+  },
+  {
+   "op": "rightel",
+   "mb": 1024,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 18690
+  },
+  {
+   "op": "rightel",
+   "mb": 0,
+   "night_mb": 15360,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 12100,
+   "window": "2-7"
+  },
+  {
+   "op": "rightel",
+   "mb": 2048,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 25480
+  },
+  {
+   "op": "rightel",
+   "mb": 3072,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 33840
+  },
+  {
+   "op": "rightel",
+   "mb": 4096,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 37660
+  },
+  {
+   "op": "rightel",
+   "mb": 5120,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 41480
+  },
+  {
+   "op": "rightel",
+   "mb": 7168,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 52300
+  },
+  {
+   "op": "rightel",
+   "mb": 8192,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 58400
+  },
+  {
+   "op": "rightel",
+   "mb": 10240,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 69900
+  },
+  {
+   "op": "rightel",
+   "mb": 15360,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 99900
+  },
+  {
+   "op": "rightel",
+   "mb": 25600,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 151000
+  },
+  {
+   "op": "rightel",
+   "mb": 51200,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 290000
+  },
+  {
+   "op": "rightel",
+   "mb": 0,
+   "night_mb": 15360,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 21240,
+   "window": "6-12"
+  },
+  {
+   "op": "rightel",
+   "mb": 15360,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 60,
+   "price": 117000
+  },
+  {
+   "op": "rightel",
+   "mb": 35840,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 60,
+   "price": 266000
+  },
+  {
+   "op": "rightel",
+   "mb": 46080,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 333000
+  },
+  {
+   "op": "rightel",
+   "mb": 61440,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 432000
+  },
+  {
+   "op": "rightel",
+   "mb": 51200,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 350000
+  },
+  {
+   "op": "rightel",
+   "mb": 81920,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 530000
+  },
+  {
+   "op": "rightel",
+   "mb": 153600,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 365,
+   "price": 885000
+  },
+  {
+   "op": "rightel",
+   "mb": 307200,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 365,
+   "price": 1690000
+  },
+  {
+   "op": "shatel",
+   "mb": 30720,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 165000,
+   "note": "پیشنهاد ویژه"
+  },
+  {
+   "op": "shatel",
+   "mb": 12288,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 68000,
+   "note": "پیشنهاد ویژه"
+  },
+  {
+   "op": "shatel",
+   "mb": 9216,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 52000,
+   "note": "پیشنهاد ویژه"
+  },
+  {
+   "op": "shatel",
+   "mb": 358400,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 365,
+   "price": 3560000
+  },
+  {
+   "op": "shatel",
+   "mb": 153600,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 365,
+   "price": 1660000
+  },
+  {
+   "op": "shatel",
+   "mb": 378880,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 3140000
+  },
+  {
+   "op": "shatel",
+   "mb": 189440,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 1830000
+  },
+  {
+   "op": "shatel",
+   "mb": 102400,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 980000
+  },
+  {
+   "op": "shatel",
+   "mb": 76800,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 690000
+  },
+  {
+   "op": "shatel",
+   "mb": 61440,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 495000
+  },
+  {
+   "op": "shatel",
+   "mb": 35840,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 348000
+  },
+  {
+   "op": "shatel",
+   "mb": 28672,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 254000
+  },
+  {
+   "op": "shatel",
+   "mb": 28672,
+   "night_mb": 0,
+   "fixed_mb": 61440,
+   "days": 180,
+   "price": 406500,
+   "note": "همراه با مکالمه"
+  },
+  {
+   "op": "shatel",
+   "mb": 20480,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 182000
+  },
+  {
+   "op": "shatel",
+   "mb": 15360,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 137000
+  },
+  {
+   "op": "shatel",
+   "mb": 363520,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 2599000
+  },
+  {
+   "op": "shatel",
+   "mb": 102400,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 739000
+  },
+  {
+   "op": "shatel",
+   "mb": 66560,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 498000
+  },
+  {
+   "op": "shatel",
+   "mb": 35840,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 268000
+  },
+  {
+   "op": "shatel",
+   "mb": 20480,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 162000
+  },
+  {
+   "op": "shatel",
+   "mb": 17408,
+   "night_mb": 0,
+   "fixed_mb": 40960,
+   "days": 90,
+   "price": 224400,
+   "note": "همراه با مکالمه"
+  },
+  {
+   "op": "shatel",
+   "mb": 12288,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 98000
+  },
+  {
+   "op": "shatel",
+   "mb": 12288,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 117000,
+   "note": "همراه با مکالمه و پیامک، حجم ماه به ماه تقسیم میشه"
+  },
+  {
+   "op": "shatel",
+   "mb": 10240,
+   "night_mb": 0,
+   "fixed_mb": 30720,
+   "days": 90,
+   "price": 178000
+  },
+  {
+   "op": "shatel",
+   "mb": 6144,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 60600
+  },
+  {
+   "op": "shatel",
+   "mb": 6144,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 74400,
+   "note": "همراه با مکالمه و پیامک، حجم ماه به ماه تقسیم میشه"
+  },
+  {
+   "op": "shatel",
+   "mb": 6144,
+   "night_mb": 0,
+   "fixed_mb": 30720,
+   "days": 90,
+   "price": 154200,
+   "note": "همراه با مکالمه و پیامک، حجم ماه به ماه تقسیم میشه"
+  },
+  {
+   "op": "shatel",
+   "mb": 3072,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 66600,
+   "note": "همراه با مکالمه و پیامک، حجم ماه به ماه تقسیم میشه"
+  },
+  {
+   "op": "shatel",
+   "mb": 40960,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 60,
+   "price": 291000
+  },
+  {
+   "op": "shatel",
+   "mb": 20480,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 60,
+   "price": 149500
+  },
+  {
+   "op": "shatel",
+   "mb": 71680,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 486000
+  },
+  {
+   "op": "shatel",
+   "mb": 56320,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 383000
+  },
+  {
+   "op": "shatel",
+   "mb": 51200,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 354000
+  },
+  {
+   "op": "shatel",
+   "mb": 51200,
+   "night_mb": 0,
+   "fixed_mb": 51200,
+   "days": 30,
+   "price": 484000
+  },
+  {
+   "op": "shatel",
+   "mb": 30720,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 215000
+  },
+  {
+   "op": "shatel",
+   "mb": 20480,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 139000
+  },
+  {
+   "op": "shatel",
+   "mb": 12288,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 88000
+  },
+  {
+   "op": "shatel",
+   "mb": 10240,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 71000
+  },
+  {
+   "op": "shatel",
+   "mb": 10240,
+   "night_mb": 0,
+   "fixed_mb": 30720,
+   "days": 30,
+   "price": 168000
+  },
+  {
+   "op": "shatel",
+   "mb": 7168,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 57000
+  },
+  {
+   "op": "shatel",
+   "mb": 6144,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 51000
+  },
+  {
+   "op": "shatel",
+   "mb": 4096,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 39400
+  },
+  {
+   "op": "shatel",
+   "mb": 4096,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 50300,
+   "note": "همراه با مکالمه و پیامک"
+  },
+  {
+   "op": "shatel",
+   "mb": 4096,
+   "night_mb": 0,
+   "fixed_mb": 20480,
+   "days": 30,
+   "price": 97600
+  },
+  {
+   "op": "shatel",
+   "mb": 3072,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 35000
+  },
+  {
+   "op": "shatel",
+   "mb": 2560,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 31000
+  },
+  {
+   "op": "shatel",
+   "mb": 2048,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 25500
+  },
+  {
+   "op": "shatel",
+   "mb": 2048,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 31400,
+   "note": "همراه با مکالمه و پیامک"
+  },
+  {
+   "op": "shatel",
+   "mb": 1024,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 18900
+  },
+  {
+   "op": "shatel",
+   "mb": 1024,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 23220,
+   "note": "همراه با مکالمه و پیامک"
+  },
+  {
+   "op": "shatel",
+   "mb": 500,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 11880
+  },
+  {
+   "op": "shatel",
+   "mb": 15360,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 106200
+  },
+  {
+   "op": "shatel",
+   "mb": 7168,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 50900
+  },
+  {
+   "op": "shatel",
+   "mb": 5120,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 42000
+  },
+  {
+   "op": "shatel",
+   "mb": 2560,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 26000
+  },
+  {
+   "op": "shatel",
+   "mb": 1536,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 21200
+  },
+  {
+   "op": "shatel",
+   "mb": 750,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 15,
+   "price": 15100
+  },
+  {
+   "op": "shatel",
+   "mb": 20480,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 121700
+  },
+  {
+   "op": "shatel",
+   "mb": 7168,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 49500
+  },
+  {
+   "op": "shatel",
+   "mb": 5120,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 37000
+  },
+  {
+   "op": "shatel",
+   "mb": 4096,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 30400
+  },
+  {
+   "op": "shatel",
+   "mb": 3584,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 29200
+  },
+  {
+   "op": "shatel",
+   "mb": 2560,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 23700
+  },
+  {
+   "op": "shatel",
+   "mb": 2560,
+   "night_mb": 0,
+   "fixed_mb": 5120,
+   "days": 7,
+   "price": 38950
+  },
+  {
+   "op": "shatel",
+   "mb": 1536,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 19900
+  },
+  {
+   "op": "shatel",
+   "mb": 800,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 14300
+  },
+  {
+   "op": "shatel",
+   "mb": 800,
+   "night_mb": 0,
+   "fixed_mb": 3072,
+   "days": 7,
+   "price": 34100,
+   "note": "همراه با مکالمه"
+  },
+  {
+   "op": "shatel",
+   "mb": 550,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 11890
+  },
+  {
+   "op": "shatel",
+   "mb": 5120,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 35400
+  },
+  {
+   "op": "shatel",
+   "mb": 2560,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 20500
+  },
+  {
+   "op": "shatel",
+   "mb": 1024,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 14390
+  },
+  {
+   "op": "shatel",
+   "mb": 750,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 3,
+   "price": 11900
+  },
+  {
+   "op": "shatel",
+   "mb": 7168,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 41700
+  },
+  {
+   "op": "shatel",
+   "mb": 5120,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 31100
+  },
+  {
+   "op": "shatel",
+   "mb": 2560,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 18900
+  },
+  {
+   "op": "shatel",
+   "mb": 1024,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 10900
+  },
+  {
+   "op": "shatel",
+   "mb": 750,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 10330
+  },
+  {
+   "op": "shatel",
+   "mb": 400,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 8300
+  },
+  {
+   "op": "shatel",
+   "mb": 4096,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 0,
+   "price": 22900,
+   "note": "۲ ساعته"
+  }
+ ]
+}

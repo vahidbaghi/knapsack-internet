@@ -1,62 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/themes/base/jquery-ui.min.css">
+  <title>با این پول چقدر اینترنت میشه خرید؟</title>
+  <meta name="description" content="اپراتور، مدت و بودجه‌ت رو بگو، ارزون‌ترین ترکیب بسته اینترنت رو بهت میگیم.">
+  <meta property="og:title" content="با این پول چقدر اینترنت میشه خرید؟">
+  <meta property="og:description" content="اپراتور، مدت و بودجه‌ت رو بگو، بهترین ترکیب بسته اینترنت رو بهت میگیم.">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='6' y='9' width='20' height='19' rx='5' fill='%23222'/%3E%3Cpath d='M11 9V7a5 5 0 0 1 10 0v2' stroke='%23222' stroke-width='3' fill='none'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap">
   <link rel="stylesheet" href="./style.css">
-  <title>انتخاب بهینه بسته اینترنتی</title>
 </head>
 <body>
-  <h1>بسته های موبایل</h1>
-  <p>
-  جزئیات این کار رو میتونید در لینک مقابل بخونید : https://vahidbaghi.ir/blog/?p=606
-  </p>
-  <fieldset>
-    <legend>اپراتور : </legend>
-    <label><input type="checkbox" name="operator" value="irancell" checked>ایرانسل</label>
-    <label><input type="checkbox" name="operator" value="mci" checked>همراه اول</label>
-    <label><input type="checkbox" name="operator" value="rightel" checked>رایتل</label>
-	<label><input type="checkbox" name="operator" value="shatelmobile" checked>شاتل موبایل (همراه)</label>
-	<label><input type="checkbox" name="operator" value="shatelmobile_adsl" checked>شاتل موبایل (همراه + ثابت)</label>
-  </fieldset>
+  <main class="app">
+    <div class="bar">
+      <button class="back" id="back" type="button" aria-label="قبلی" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+      <div class="dots" id="dots"></div>
+    </div>
+    <section id="screen" aria-live="polite"></section>
+  </main>
 
-  <fieldset>
-    <legend>مدت زمان بسته : </legend>
-    <label><input type="checkbox" name="duration" value="1" checked>۱ روزه</label>
-    <label><input type="checkbox" name="duration" value="3" checked>۳ روزه</label>
-    <label><input type="checkbox" name="duration" value="7" checked>۷ روزه</label>
-    <label><input type="checkbox" name="duration" value="15" checked>۱۵ روزه</label>
-    <label><input type="checkbox" name="duration" value="30" checked>۱ ماهه</label>
-    <label><input type="checkbox" name="duration" value="60" checked>۲ ماهه</label>
-    <label><input type="checkbox" name="duration" value="90" checked>۳ ماهه</label>
-    <label><input type="checkbox" name="duration" value="120" checked>۴ ماهه</label>
-    <label><input type="checkbox" name="duration" value="180" checked>۶ ماهه</label>
-    <label><input type="checkbox" name="duration" value="365" checked>۱۲ ماهه</label>
-  </fieldset>
+  <footer class="foot">
+    قیمت ها: <span id="updated">…</span> · <a href="https://vahidbaghi.ir/blog/posts/5.html">چطوری کار می‌کنه؟</a>
+  </footer>
 
-  <fieldset>
-    <legend>محدوده ساعت استفاده : </legend>
-    <label><input type="checkbox" name="timeframe" value="24H|2H" checked>۲۴ ساعته</label>
-    <label><input type="checkbox" name="timeframe" value="6AM-12PM|2AM-7AM|1AM-11AM" checked>شبانه</label>
-    <label><input type="checkbox" name="timeframe" value="24H,2AM-7AM" checked>ترکیبی</label>
-	<br>
-	<strong>۲۴ ساعته</strong>: در تمام ساعات شبانه‌روز قابل استفاده است و محدود به ساعت خاصی نیست.
-	<br>
-	<strong>شبانه</strong>: فقط در ساعات خاص قابل استفاده است.
-	<br>
-	<strong>ترکیبی</strong>: بخشی از حجم در طول روز و بخشی از حجم شبانه قابل استفاده است. (مخصوص رایتل)
-
-  </fieldset>
-  <div>
-    <label for="capacity">بودجه (تومان) : </label>
-    <input type="number" id="capacity" name="capacity" value="10000">
-    <button id="calculateBtn">محاسبه</button>
-  </div>
-  <ul id="packages"></ul>
-
-  <script src="https://lib.arvancloud.ir/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"></script>
-  <script src="./script.js"></script>
+  <script src="./solver.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
