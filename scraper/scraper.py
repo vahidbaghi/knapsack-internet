@@ -1,5 +1,5 @@
 """
-Scrape the internet packages of Irancell, MCI (Hamrah Aval), Rightel, Shatel Mobile and Samantel
+Scrape the internet packages of Irancell, MCI (Hamrah Aval), Rightel, Shatel Mobile, Samantel and Ariantel
 and write them to ../data.json, which the page loads.
 
     pip install requests beautifulsoup4
@@ -13,7 +13,7 @@ Samantel only lists its packages for a Samantel number, so give it one (it is ne
 Only works from an Iranian IP (the operator sites block foreign traffic).
 
 Every package in data.json looks like this:
-    op        irancell | mci | rightel | shatel | samantel
+    op        irancell | mci | rightel | shatel | samantel | ariantel
     mb        volume usable at any hour (MB)
     night_mb  volume usable only at special hours (MB), with `window` naming the hours
     fixed_mb  home internet volume that comes with the package (MB, Shatel combos only)
@@ -49,9 +49,10 @@ URLS = {
     'rightel': 'https://portal-api.rightel.ir/extra-package/api/v1/extra-package-direct/web-site/purchasable-package',
     'shatel': 'https://shatelmobile.ir/plans-tariffs/internet-packages/',
     'samantel': 'https://payment.samantel.ir/api/mediator/samantel/',
+    'ariantel': 'https://ariantel.ir/wp-content/themes/astra/customShortCodes/getnetbillocsproducts.php',
 }
 RAW_FILES = {'irancell': 'irancell.html', 'mci': 'mci.html', 'rightel': 'rightel_pkgs.json', 'shatel': 'shatel.html',
-             'samantel': 'samantel.json'}
+             'samantel': 'samantel.json', 'ariantel': 'ariantel.json'}
 
 FA_DIGITS = str.maketrans('۰۱۲۳۴۵۶۷۸۹', '0123456789')
 EN_DIGITS = str.maketrans('0123456789', '۰۱۲۳۴۵۶۷۸۹')
@@ -91,6 +92,10 @@ def fetch(name, offline):
             raise RuntimeError('set SAMANTEL_MOBILE to a Samantel number')
         h = {**UA, 'Referer': 'https://payment.samantel.ir/package'}
         r = requests.post(URLS['samantel'], data={'method': 'getpackagelistv2', 'mobile': mobile}, headers=h, timeout=60)
+    elif name == 'ariantel':
+        # the list is the same for prepaid and postpaid SIMs and needs no phone number
+        h = {**UA, 'Referer': 'https://ariantel.ir/internet-package/'}
+        r = requests.post(URLS['ariantel'], data={'action': 'getnetbillocsproducts', 'paidType': 'postPaid'}, headers=h, timeout=60)
     elif name == 'rightel':
         h = {**UA, 'Origin': 'https://package.rightel.ir', 'Referer': 'https://package.rightel.ir/'}
         # the package site logs in as the public "website" user and sends that token along
@@ -287,6 +292,25 @@ def samantel(text, skipped, prev=()):
     return out
 
 
+# ---------------------------------------------------------------- Ariantel
+def ariantel(text, skipped):
+    data = json.loads(text)
+    if data.get('result') != 'success':
+        raise ValueError(f"ariantel answered {data.get('result')}")
+    out = []
+    for it in data['data']:
+        # the site mixes Arabic and Persian letters
+        name = fa2en(it['name']).replace('ي', 'ی').strip()
+        if it['groupname_en'] != 'Public Package' or 'دانشجو' in name:
+            skipped.append(('ariantel', name, 'not for everyone'))
+            continue
+        vol = re.match(r'(\d+(?:\.\d+)?)\s*(گیگابایت|مگابایت)', name)
+        rial = int(it['once_price_with_tax'])  # with VAT: this is what the buyer pays
+        assert rial % 10 == 0 and vol, name
+        out.append(pkg('ariantel', rial // 10, int(it['addondays']), mb=to_mb(vol.group(1), vol.group(2))))
+    return out
+
+
 def main():
     offline = '--offline' in sys.argv
     only = next((a.split('=', 1)[1] for a in sys.argv if a.startswith('--only=')), None)
@@ -296,7 +320,7 @@ def main():
     except (OSError, ValueError, KeyError):
         prev = []
     parsers = [('irancell', irancell), ('mci', mci), ('rightel', rightel), ('shatel', shatel),
-               ('samantel', lambda text, skipped: samantel(text, skipped, prev))]
+               ('samantel', lambda text, skipped: samantel(text, skipped, prev)), ('ariantel', ariantel)]
     if only and only not in dict(parsers):
         sys.exit(f'unknown operator {only}')
     skipped, packages, counts = [], [], {}

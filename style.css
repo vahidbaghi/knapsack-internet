@@ -16,6 +16,7 @@
   --op-rightel: #e87ba4;
   --op-shatel: #008300;
   --op-samantel: #f05c20;
+  --op-ariantel: #58e400;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -36,6 +37,7 @@
     --op-rightel: #d55181;
     --op-shatel: #008300;
     --op-samantel: #f05c20;
+    --op-ariantel: #58e400;
   }
 }
 
@@ -56,6 +58,7 @@
   --op-rightel: #d55181;
   --op-shatel: #008300;
   --op-samantel: #f05c20;
+  --op-ariantel: #58e400;
 }
 
 * { box-sizing: border-box; }

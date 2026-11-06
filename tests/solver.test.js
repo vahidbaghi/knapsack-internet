@@ -33,7 +33,7 @@ test('samantel data is in data.json and well formed', () => {
 test('other operators were not touched', () => {
   const counts = {};
   data.packages.forEach(p => { counts[p.op] = (counts[p.op] || 0) + 1; });
-  assert.deepEqual(counts, { irancell: 31, mci: 27, rightel: 36, shatel: 76, samantel: 20 });
+  assert.deepEqual(counts, { irancell: 31, mci: 27, rightel: 36, shatel: 76, samantel: 20, ariantel: 17 });
 });
 
 test('with 21,000,000 rial (2,310,000 toman) on a Friday the 400 GB year package wins', () => {

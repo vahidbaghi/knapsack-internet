@@ -7,6 +7,7 @@
     { id: 'rightel', name: 'رایتل' },
     { id: 'shatel', name: 'شاتل موبایل' },
     { id: 'samantel', name: 'سامانتل' },
+    { id: 'ariantel', name: 'آرین‌تل' },
   ];
   const OP = Object.fromEntries(OPS.map(o => [o.id, o]));
   // how long the user needs internet

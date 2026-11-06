@@ -1580,6 +1580,142 @@
    "price": 3850000,
    "sid": 1293,
    "fri_price": 2310000
+  },
+  {
+   "op": "ariantel",
+   "mb": 1024,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 11330
+  },
+  {
+   "op": "ariantel",
+   "mb": 3584,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 33000
+  },
+  {
+   "op": "ariantel",
+   "mb": 5120,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 14,
+   "price": 47080
+  },
+  {
+   "op": "ariantel",
+   "mb": 8192,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 75350
+  },
+  {
+   "op": "ariantel",
+   "mb": 12288,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 109230
+  },
+  {
+   "op": "ariantel",
+   "mb": 20480,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 182050
+  },
+  {
+   "op": "ariantel",
+   "mb": 46080,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 395450
+  },
+  {
+   "op": "ariantel",
+   "mb": 25600,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 60,
+   "price": 211860
+  },
+  {
+   "op": "ariantel",
+   "mb": 15360,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 131780
+  },
+  {
+   "op": "ariantel",
+   "mb": 30720,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 244860
+  },
+  {
+   "op": "ariantel",
+   "mb": 71680,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 571230
+  },
+  {
+   "op": "ariantel",
+   "mb": 40960,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 318890
+  },
+  {
+   "op": "ariantel",
+   "mb": 61440,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 478390
+  },
+  {
+   "op": "ariantel",
+   "mb": 92160,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 706200
+  },
+  {
+   "op": "ariantel",
+   "mb": 81920,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 365,
+   "price": 615230
+  },
+  {
+   "op": "ariantel",
+   "mb": 122880,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 365,
+   "price": 922790
+  },
+  {
+   "op": "ariantel",
+   "mb": 256000,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 365,
+   "price": 1922470
   }
  ]
 }
