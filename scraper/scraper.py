@@ -84,6 +84,9 @@ def pkg(op, price, days, mb=0, night_mb=0, window=None, fixed_mb=0, note='', **e
 def fetch(name, offline):
     path = os.path.join(RAW, RAW_FILES[name])
     if offline:
+        if not os.path.exists(path):
+            # an operator added after the last online run has no saved page yet
+            raise RuntimeError(f'no saved page {RAW_FILES[name]} in raw/')
         with open(path, encoding='utf-8') as f:
             return f.read()
     if name == 'samantel':

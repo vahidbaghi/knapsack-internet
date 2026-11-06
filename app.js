@@ -26,7 +26,7 @@
     30: ['ماهانه', 'ماه'], 60: ['دو ماهه', 'دو ماه'], 90: ['سه ماهه', 'سه ماه'], 120: ['چهار ماهه', 'چهار ماه'],
     180: ['شش ماهه', 'شش ماه'], 270: ['نه ماهه', 'نه ماه'], 365: ['یک ساله', 'سال'],
   };
-  // a package validity we have no name for still gets one (270 days, 14 days ...)
+  // a package validity we have no name for still gets one (10 days, 45 days ...)
   const kindOf = d => KIND[d] || [`${fa(d)} روزه`, `${fa(d)} روز`];
   const PRESETS = [50000, 100000, 200000, 500000];
   // every answer that can live in the URL; `w` (when to buy) is only asked when Samantel is among the operators
@@ -57,7 +57,8 @@
     const a = {};
     if (OP[q.get('op')] || q.get('op') === 'any') a.op = q.get('op');
     if (PERIOD[q.get('d')]) a.d = +q.get('d');
-    if (hasSamantel(a) && (q.get('w') === 'fri' || q.get('w') === 'reg')) a.w = q.get('w');
+    // kept even while the operator is being changed, so picking Samantel again does not ask it twice
+    if (q.get('w') === 'fri' || q.get('w') === 'reg') a.w = q.get('w');
     if (q.has('t')) a.t = q.get('t').split(',').filter(Boolean);
     if (+q.get('b') > 0) a.b = Math.min(+q.get('b'), 1e8);
     return a;
@@ -119,7 +120,7 @@
     const step = steps.find(k => a[k] == null) || 'result';
     const i = step === 'result' ? steps.length : steps.indexOf(step);
     $('#dots').innerHTML = steps.map((_, k) => `<span class="${k <= i ? 'on' : ''}"></span>`).join('');
-    $('#back').hidden = !Object.keys(a).length;
+    $('#back').hidden = !steps.some(k => a[k] != null);
     ({ op: askOp, w: askWhen, d: askPeriod, t: askKinds, b: askBudget, result })[step](a);
     fit();
     window.scrollTo(0, 0);
@@ -283,7 +284,8 @@
   // back = un-answer the last question (works the same when the page was opened from a shared link)
   $('#back').onclick = () => {
     const a = answers();
-    edit([...STEPS].reverse().find(k => a[k] != null));
+    // a leftover Samantel answer (`w`) on another operator is skipped, or back would seem to do nothing
+    edit([...activeSteps(a)].reverse().find(k => a[k] != null));
   };
   window.addEventListener('hashchange', render);
   let rw = innerWidth;

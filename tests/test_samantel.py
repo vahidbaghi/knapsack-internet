@@ -2,6 +2,7 @@
 import copy
 import json
 import os
+import re
 import sys
 import unittest
 
@@ -96,7 +97,7 @@ class Samantel(unittest.TestCase):
             parse({'errCode': 32, 'errDesc': 'bad number', 'result': []})
 
     def test_fixture_has_no_phone_number(self):
-        self.assertNotIn('9999968669', json.dumps(FRIDAY))
+        self.assertIsNone(re.search(r'9\d{9}', json.dumps(FRIDAY)))
 
 
 if __name__ == '__main__':

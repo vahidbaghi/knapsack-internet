@@ -15,8 +15,8 @@
   --op-irancell: #eda100;
   --op-rightel: #e87ba4;
   --op-shatel: #008300;
-  --op-samantel: #f05c20;
-  --op-ariantel: #58e400;
+  --op-samantel: #c2410c;
+  --op-ariantel: #3da600;
 }
 
 @media (prefers-color-scheme: dark) {
