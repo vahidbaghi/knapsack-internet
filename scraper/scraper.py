@@ -109,9 +109,14 @@ def irancell(text, skipped):
             skipped.append(('irancell', name, 'only sold on Fridays'))
             continue
         m = re.match(r'(\d+)(MB|GB)\+(\d+)GB \(2-7AM\)', p['name']['en'])
+        # a package that is only "200GB (2-7AM)" is all night volume, though `traffic` holds it
+        night = re.fullmatch(r'\s*(\d+)(MB|GB)\s*\(2-7\s*AM\)\s*', p['name']['en'])
         if m:
             assert to_mb(m.group(1), m.group(2)) == mb, name
             out.append(pkg('irancell', p['price'], days, mb=mb, night_mb=to_mb(m.group(3), 'GB'), window='2-7'))
+        elif night:
+            assert to_mb(night.group(1), night.group(2)) == mb, name
+            out.append(pkg('irancell', p['price'], days, night_mb=mb, window='2-7'))
         else:
             out.append(pkg('irancell', p['price'], days, mb=mb))
     return out
