@@ -1379,6 +1379,343 @@
    "days": 0,
    "price": 32100,
    "note": "۲ ساعته"
+  },
+  {
+   "op": "samantel",
+   "mb": 1024,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 17600,
+   "sid": 350,
+   "fri_price": 10560
+  },
+  {
+   "op": "samantel",
+   "mb": 1024,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 18700,
+   "sid": 351,
+   "fri_price": 11220
+  },
+  {
+   "op": "samantel",
+   "mb": 3072,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 14,
+   "price": 50050,
+   "sid": 365,
+   "fri_price": 30030
+  },
+  {
+   "op": "samantel",
+   "mb": 3072,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 53900,
+   "sid": 379,
+   "fri_price": 32340
+  },
+  {
+   "op": "samantel",
+   "mb": 4096,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 64900,
+   "sid": 380,
+   "fri_price": 38940
+  },
+  {
+   "op": "samantel",
+   "mb": 16384,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 129800,
+   "note": "۸ گیگ × ۲",
+   "sid": 385
+  },
+  {
+   "op": "samantel",
+   "mb": 20480,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 161700,
+   "note": "۱۰ گیگ × ۲",
+   "sid": 389
+  },
+  {
+   "op": "samantel",
+   "mb": 10240,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 60,
+   "price": 121000,
+   "sid": 397,
+   "fri_price": 72600
+  },
+  {
+   "op": "samantel",
+   "mb": 15360,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 60,
+   "price": 176000,
+   "sid": 400,
+   "fri_price": 105600
+  },
+  {
+   "op": "samantel",
+   "mb": 15360,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 176000,
+   "sid": 407,
+   "fri_price": 105600
+  },
+  {
+   "op": "samantel",
+   "mb": 18432,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 205700,
+   "sid": 412,
+   "fri_price": 123420
+  },
+  {
+   "op": "samantel",
+   "mb": 36864,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 392700,
+   "sid": 417,
+   "fri_price": 235620
+  },
+  {
+   "op": "samantel",
+   "mb": 51200,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 270,
+   "price": 515900,
+   "sid": 429,
+   "fri_price": 309540
+  },
+  {
+   "op": "samantel",
+   "mb": 73728,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 270,
+   "price": 742500,
+   "sid": 424,
+   "fri_price": 445500
+  },
+  {
+   "op": "samantel",
+   "mb": 81920,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 365,
+   "price": 825000,
+   "sid": 618,
+   "fri_price": 495000
+  },
+  {
+   "op": "samantel",
+   "mb": 153600,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 365,
+   "price": 1441000,
+   "sid": 619
+  },
+  {
+   "op": "samantel",
+   "mb": 40960,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 323400,
+   "note": "۲۰ گیگ × ۲",
+   "sid": 631
+  },
+  {
+   "op": "samantel",
+   "mb": 0,
+   "night_mb": 14336,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 100100,
+   "window": "1-6",
+   "note": "همراه با ۲۰۰ دقیقه مکالمه",
+   "sid": 878
+  },
+  {
+   "op": "samantel",
+   "mb": 0,
+   "night_mb": 20480,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 141900,
+   "window": "1-6",
+   "note": "همراه با ۳۵۰ دقیقه مکالمه",
+   "sid": 879
+  },
+  {
+   "op": "samantel",
+   "mb": 409600,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 365,
+   "price": 3850000,
+   "sid": 1293,
+   "fri_price": 2310000
+  },
+  {
+   "op": "ariantel",
+   "mb": 1024,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 1,
+   "price": 11330
+  },
+  {
+   "op": "ariantel",
+   "mb": 3584,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 7,
+   "price": 33000
+  },
+  {
+   "op": "ariantel",
+   "mb": 5120,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 14,
+   "price": 47080
+  },
+  {
+   "op": "ariantel",
+   "mb": 8192,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 75350
+  },
+  {
+   "op": "ariantel",
+   "mb": 12288,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 109230
+  },
+  {
+   "op": "ariantel",
+   "mb": 20480,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 182050
+  },
+  {
+   "op": "ariantel",
+   "mb": 46080,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 30,
+   "price": 395450
+  },
+  {
+   "op": "ariantel",
+   "mb": 25600,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 60,
+   "price": 211860
+  },
+  {
+   "op": "ariantel",
+   "mb": 15360,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 131780
+  },
+  {
+   "op": "ariantel",
+   "mb": 30720,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 244860
+  },
+  {
+   "op": "ariantel",
+   "mb": 71680,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 90,
+   "price": 571230
+  },
+  {
+   "op": "ariantel",
+   "mb": 40960,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 318890
+  },
+  {
+   "op": "ariantel",
+   "mb": 61440,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 478390
+  },
+  {
+   "op": "ariantel",
+   "mb": 92160,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 180,
+   "price": 706200
+  },
+  {
+   "op": "ariantel",
+   "mb": 81920,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 365,
+   "price": 615230
+  },
+  {
+   "op": "ariantel",
+   "mb": 122880,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 365,
+   "price": 922790
+  },
+  {
+   "op": "ariantel",
+   "mb": 256000,
+   "night_mb": 0,
+   "fixed_mb": 0,
+   "days": 365,
+   "price": 1922470
   }
  ]
 }

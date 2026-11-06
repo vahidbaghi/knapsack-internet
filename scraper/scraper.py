@@ -1,21 +1,28 @@
 """
-Scrape the internet packages of Irancell, MCI (Hamrah Aval), Rightel and Shatel Mobile
+Scrape the internet packages of Irancell, MCI (Hamrah Aval), Rightel, Shatel Mobile, Samantel and Ariantel
 and write them to ../data.json, which the page loads.
 
     pip install requests beautifulsoup4
-    python scraper.py            # fetch from the operators and write ../data.json
-    python scraper.py --offline  # rebuild from the pages saved in raw/ by the last run
+    python scraper.py                  # fetch from the operators and write ../data.json
+    python scraper.py --offline        # rebuild from the pages saved in raw/ by the last run
+    python scraper.py --only=samantel  # refresh one operator, keep the others as they are
+
+Samantel only lists its packages for a Samantel number, so give it one (it is never stored in data.json):
+    SAMANTEL_MOBILE=09xxxxxxxxx python scraper.py --only=samantel
 
 Only works from an Iranian IP (the operator sites block foreign traffic).
 
 Every package in data.json looks like this:
-    op        irancell | mci | rightel | shatel
+    op        irancell | mci | rightel | shatel | samantel | ariantel
     mb        volume usable at any hour (MB)
     night_mb  volume usable only at special hours (MB), with `window` naming the hours
     fixed_mb  home internet volume that comes with the package (MB, Shatel combos only)
     days      validity in days (0 = a few hours, see `note`)
     price     toman
     note      short extra info shown under the package
+    fri_price toman, Samantel only: the price on Fridays (40% off). Missing = no Friday discount.
+              `price` is then the normal price.
+    sid       Samantel only: the offer id on their site
 """
 import json
 import os
@@ -41,8 +48,11 @@ URLS = {
     'rightel_auth': 'https://portal-api.rightel.ir/user-management/api/v1/auth/authenticate',
     'rightel': 'https://portal-api.rightel.ir/extra-package/api/v1/extra-package-direct/web-site/purchasable-package',
     'shatel': 'https://shatelmobile.ir/plans-tariffs/internet-packages/',
+    'samantel': 'https://payment.samantel.ir/api/mediator/samantel/',
+    'ariantel': 'https://ariantel.ir/wp-content/themes/astra/customShortCodes/getnetbillocsproducts.php',
 }
-RAW_FILES = {'irancell': 'irancell.html', 'mci': 'mci.html', 'rightel': 'rightel_pkgs.json', 'shatel': 'shatel.html'}
+RAW_FILES = {'irancell': 'irancell.html', 'mci': 'mci.html', 'rightel': 'rightel_pkgs.json', 'shatel': 'shatel.html',
+             'samantel': 'samantel.json', 'ariantel': 'ariantel.json'}
 
 FA_DIGITS = str.maketrans('۰۱۲۳۴۵۶۷۸۹', '0123456789')
 EN_DIGITS = str.maketrans('0123456789', '۰۱۲۳۴۵۶۷۸۹')
@@ -61,12 +71,13 @@ def to_mb(num, unit):
     return int(round(v * 1024)) if unit in ('گیگابایت', 'GB') else int(round(v))
 
 
-def pkg(op, price, days, mb=0, night_mb=0, window=None, fixed_mb=0, note=''):
+def pkg(op, price, days, mb=0, night_mb=0, window=None, fixed_mb=0, note='', **extra):
     p = {'op': op, 'mb': mb, 'night_mb': night_mb, 'fixed_mb': fixed_mb, 'days': days, 'price': int(price)}
     if window:
         p['window'] = window
     if note:
         p['note'] = note
+    p.update(extra)
     return p
 
 
@@ -75,7 +86,17 @@ def fetch(name, offline):
     if offline:
         with open(path, encoding='utf-8') as f:
             return f.read()
-    if name == 'rightel':
+    if name == 'samantel':
+        mobile = os.environ.get('SAMANTEL_MOBILE', '').strip()
+        if not mobile:
+            raise RuntimeError('set SAMANTEL_MOBILE to a Samantel number')
+        h = {**UA, 'Referer': 'https://payment.samantel.ir/package'}
+        r = requests.post(URLS['samantel'], data={'method': 'getpackagelistv2', 'mobile': mobile}, headers=h, timeout=60)
+    elif name == 'ariantel':
+        # the list is the same for prepaid and postpaid SIMs and needs no phone number
+        h = {**UA, 'Referer': 'https://ariantel.ir/internet-package/'}
+        r = requests.post(URLS['ariantel'], data={'action': 'getnetbillocsproducts', 'paidType': 'postPaid'}, headers=h, timeout=60)
+    elif name == 'rightel':
         h = {**UA, 'Origin': 'https://package.rightel.ir', 'Referer': 'https://package.rightel.ir/'}
         # the package site logs in as the public "website" user and sends that token along
         tok = requests.post(URLS['rightel_auth'], json={'username': 'website'}, headers=h, timeout=60).json()['data']['token']
@@ -217,11 +238,105 @@ def shatel(text, skipped):
     return out
 
 
+# ---------------------------------------------------------------- Samantel
+# Samantel prices depend on the day: on Fridays the API answers with the discounted `price` and keeps the
+# normal one in `oldPrice`. On other days `oldPrice` is gone, so which packages are discounted is remembered
+# from the previous data.json (`fri_price`).
+FRIDAY_RATE = 0.6  # 40% off
+# offers Samantel sells with the "x2 GIG" badge: the volume in the name is doubled
+SAMANTEL_X2 = {385, 389, 631}
+SAMANTEL_GROUPS = {4, 2}  # general and night; everything else (nazr-e-ab, roaming, calls, combos) is left out
+
+
+def samantel(text, skipped, prev=()):
+    data = json.loads(text)
+    if data.get('errCode') != 0:
+        raise RuntimeError(f"samantel answered errCode {data.get('errCode')}: {data.get('errDesc')}")
+    rows = data['result']
+    # packages that were discounted last time, by offer id
+    was_fri = {p['sid'] for p in prev if p.get('op') == 'samantel' and p.get('fri_price')}
+    live = any(int(r.get('oldPrice') or 0) > int(r['price']) for r in rows)
+    out = []
+    for r in rows:
+        sid, group = int(r['OfferID']), int(r['groupId'])
+        gb = float(r.get('totaldata') or 0)
+        if group not in SAMANTEL_GROUPS or gb <= 0:
+            skipped.append(('samantel', r.get('desc') or r.get('OfferName'), f"group {group}, {r.get('groupName')}"))
+            continue
+        assert int(r['price']) % 10 == 0, r['desc']
+        price = int(r['price']) // 10  # rial -> toman, with VAT: this is what the buyer pays
+        old = int(r.get('oldPrice') or 0) // 10
+        days = int(r['expireDay'])
+        mult = 2 if sid in SAMANTEL_X2 else 1
+        mb = int(round(gb * mult * 1024))
+        extra = {'sid': sid}
+        notes = []
+        if mult == 2:
+            notes.append(f'{fa_num(int(gb))} گیگ × ۲')  # the name says 20 GB, the buyer gets 40
+        if old > price:  # the Friday discount is on right now
+            if abs(price - round(old * FRIDAY_RATE)) > 1:
+                skipped.append(('samantel', r['desc'], f'discount is not 40%: {old} -> {price}'))
+            extra['fri_price'] = price
+            price = old
+        elif not live and sid in was_fri:
+            extra['fri_price'] = int(round(price * FRIDAY_RATE))
+        if group == 2:
+            m = re.search(r'(\d+)\s*دقیقه', fa2en(r['desc']))
+            if m:
+                notes.append(f'همراه با {fa_num(m.group(1))} دقیقه مکالمه')
+            out.append(pkg('samantel', price, days, night_mb=mb, window='1-6', note='، '.join(notes), **extra))
+        else:
+            out.append(pkg('samantel', price, days, mb=mb, note='، '.join(notes), **extra))
+    if not live and not was_fri:
+        skipped.append(('samantel', '-', 'no Friday prices known: run once on a Friday to learn which packages are discounted'))
+    return out
+
+
+# ---------------------------------------------------------------- Ariantel
+def ariantel(text, skipped):
+    data = json.loads(text)
+    if data.get('result') != 'success':
+        raise ValueError(f"ariantel answered {data.get('result')}")
+    out = []
+    for it in data['data']:
+        # the site mixes Arabic and Persian letters
+        name = fa2en(it['name']).replace('ي', 'ی').strip()
+        if it['groupname_en'] != 'Public Package' or 'دانشجو' in name:
+            skipped.append(('ariantel', name, 'not for everyone'))
+            continue
+        vol = re.match(r'(\d+(?:\.\d+)?)\s*(گیگابایت|مگابایت)', name)
+        rial = int(it['once_price_with_tax'])  # with VAT: this is what the buyer pays
+        assert rial % 10 == 0 and vol, name
+        out.append(pkg('ariantel', rial // 10, int(it['addondays']), mb=to_mb(vol.group(1), vol.group(2))))
+    return out
+
+
 def main():
     offline = '--offline' in sys.argv
+    only = next((a.split('=', 1)[1] for a in sys.argv if a.startswith('--only=')), None)
+    try:
+        with open(OUT, encoding='utf-8') as f:
+            prev = json.load(f)['packages']
+    except (OSError, ValueError, KeyError):
+        prev = []
+    parsers = [('irancell', irancell), ('mci', mci), ('rightel', rightel), ('shatel', shatel),
+               ('samantel', lambda text, skipped: samantel(text, skipped, prev)), ('ariantel', ariantel)]
+    if only and only not in dict(parsers):
+        sys.exit(f'unknown operator {only}')
     skipped, packages, counts = [], [], {}
-    for name, parse in [('irancell', irancell), ('mci', mci), ('rightel', rightel), ('shatel', shatel)]:
-        got = parse(fetch(name, offline), skipped)
+    for name, parse in parsers:
+        if only and name != only:
+            packages += [p for p in prev if p['op'] == name]
+            continue
+        try:
+            got = parse(fetch(name, offline), skipped)
+        except RuntimeError as e:
+            if only:
+                sys.exit(f'{name}: {e}')
+            # not fatal for a full run: keep what we had
+            print(f'{name}: {e}, keeping the old packages')
+            packages += [p for p in prev if p['op'] == name]
+            continue
         if not got:
             sys.exit(f'{name}: no packages found, the site has probably changed. data.json was not touched.')
         counts[name] = len(got)
