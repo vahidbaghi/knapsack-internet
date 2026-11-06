@@ -15,6 +15,7 @@
   --op-irancell: #eda100;
   --op-rightel: #e87ba4;
   --op-shatel: #008300;
+  --op-samantel: #f05c20;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,6 +35,7 @@
     --op-irancell: #c98500;
     --op-rightel: #d55181;
     --op-shatel: #008300;
+    --op-samantel: #f05c20;
   }
 }
 
@@ -53,6 +55,7 @@
   --op-irancell: #c98500;
   --op-rightel: #d55181;
   --op-shatel: #008300;
+  --op-samantel: #f05c20;
 }
 
 * { box-sizing: border-box; }
@@ -103,6 +106,10 @@ a { color: inherit; text-underline-offset: 3px; }
 .opt.wide { grid-column: 1 / -1; justify-content: center; font-weight: 500; color: var(--ink-2); }
 .opt:disabled { opacity: .35; cursor: default; transform: none; background: var(--surface); }
 .opt .dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+.opt-txt { display: flex; flex-direction: column; line-height: 1.5; }
+.opt-txt small { color: var(--muted); font-size: 13px; font-weight: 400; }
+.opt.now { border-color: var(--ink); }
+.hint { color: var(--muted); font-size: 15px; line-height: 1.7; margin: -12px 0 20px; }
 
 .money {
   display: flex; align-items: baseline; gap: 8px; border-bottom: 2px solid var(--ink);
@@ -171,10 +178,12 @@ a { color: inherit; text-underline-offset: 3px; }
   border-radius: 6px; padding: 0 7px; font-size: 12px; line-height: 22px; white-space: nowrap;
 }
 .bdg.hours { background: var(--ink); color: var(--page); }
+.bdg.fri { background: var(--op-samantel); color: var(--accent-ink); }
 .bdg svg { width: 11px; height: 11px; fill: currentColor; }
 .buy .price { white-space: nowrap; text-align: left; display: flex; flex-direction: column; line-height: 1.5; }
 .buy .again-note { color: var(--muted); font-size: 12px; }
 .sum { color: var(--muted); font-size: 14px; margin: 0; }
+.sum + .sum { margin-top: 4px; }
 
 .fit { white-space: nowrap; overflow: hidden; }
 

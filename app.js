@@ -6,6 +6,7 @@
     { id: 'irancell', name: 'ایرانسل' },
     { id: 'rightel', name: 'رایتل' },
     { id: 'shatel', name: 'شاتل موبایل' },
+    { id: 'samantel', name: 'سامانتل' },
   ];
   const OP = Object.fromEntries(OPS.map(o => [o.id, o]));
   // how long the user needs internet
@@ -20,12 +21,16 @@
   const PERIOD = Object.fromEntries(PERIODS.map(x => [x.d, x]));
   // package validity -> type name, and the "every ..." word used when it is bought again and again
   const KIND = {
-    1: ['روزانه', 'روز'], 3: ['سه روزه', 'سه روز'], 7: ['هفتگی', 'هفته'], 15: ['پونزده روزه', 'پونزده روز'],
+    1: ['روزانه', 'روز'], 3: ['سه روزه', 'سه روز'], 7: ['هفتگی', 'هفته'], 14: ['دو هفته‌ای', 'دو هفته'], 15: ['پونزده روزه', 'پونزده روز'],
     30: ['ماهانه', 'ماه'], 60: ['دو ماهه', 'دو ماه'], 90: ['سه ماهه', 'سه ماه'], 120: ['چهار ماهه', 'چهار ماه'],
-    180: ['شش ماهه', 'شش ماه'], 365: ['یک ساله', 'سال'],
+    180: ['شش ماهه', 'شش ماه'], 270: ['نه ماهه', 'نه ماه'], 365: ['یک ساله', 'سال'],
   };
+  // a package validity we have no name for still gets one (270 days, 14 days ...)
+  const kindOf = d => KIND[d] || [`${fa(d)} روزه`, `${fa(d)} روز`];
   const PRESETS = [50000, 100000, 200000, 500000];
-  const STEPS = ['op', 'd', 't', 'b'];
+  // every answer that can live in the URL; `w` (when to buy) is only asked when Samantel is among the operators
+  const STEPS = ['op', 'w', 'd', 't', 'b'];
+  const FRIDAY_OFF = 40;
 
   const $ = s => document.querySelector(s);
   const nf = new Intl.NumberFormat('fa-IR');
@@ -51,6 +56,7 @@
     const a = {};
     if (OP[q.get('op')] || q.get('op') === 'any') a.op = q.get('op');
     if (PERIOD[q.get('d')]) a.d = +q.get('d');
+    if (hasSamantel(a) && (q.get('w') === 'fri' || q.get('w') === 'reg')) a.w = q.get('w');
     if (q.has('t')) a.t = q.get('t').split(',').filter(Boolean);
     if (+q.get('b') > 0) a.b = Math.min(+q.get('b'), 1e8);
     return a;
@@ -67,14 +73,24 @@
   }
 
   const opsOf = a => a.op === 'any' ? OPS.map(o => o.id) : [a.op];
+  const hasSamantel = a => a.op === 'any' || a.op === 'samantel';
+  const activeSteps = a => STEPS.filter(k => k !== 'w' || hasSamantel(a));
+  // what one package costs: Samantel sells some packages 40% cheaper on Fridays
+  const priceOf = (p, a) => a.w === 'fri' && p.fri_price ? p.fri_price : p.price;
+  const isFriday = () => {
+    try {
+      return new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Tehran', weekday: 'long' }).format(new Date()) === 'Friday';
+    } catch (e) { return new Date().getDay() === 5; }
+  };
 
   // the package types a user can tick for a given period: each validity length, night packages, home-internet combos
   function kinds(a) {
     const ps = PKGS.filter(p => opsOf(a).includes(p.op) && p.days > 0);
     const out = [...new Set(ps.map(p => p.days))].filter(d => d <= a.d).sort((x, y) => x - y).map(d => {
       const n = ps.filter(p => p.days === d && !p.fixed_mb).length;
-      const sub = d < a.d ? `هر ${KIND[d][1]} یکی، تا ${fa(Math.floor(a.d / d))} بار` : '';
-      return { key: String(d), name: KIND[d] ? KIND[d][0] : `${fa(d)} روزه`, sub, n, on: true };
+      const times = Math.floor(a.d / d);
+      const sub = times > 1 ? `هر ${kindOf(d)[1]} یکی، تا ${fa(times)} بار` : '';
+      return { key: String(d), name: kindOf(d)[0], sub, n, on: true };
     }).filter(k => k.n);
     // packages valid for longer than needed are one choice: their volume works, the extra days are wasted
     const longer = ps.filter(p => p.days > a.d && !p.fixed_mb).length;
@@ -98,11 +114,12 @@
   // ------------------------------------------------------------ render
   function render() {
     const a = answers();
-    const step = STEPS.find(k => a[k] == null) || 'result';
-    const i = step === 'result' ? STEPS.length : STEPS.indexOf(step);
-    $('#dots').innerHTML = STEPS.map((_, k) => `<span class="${k <= i ? 'on' : ''}"></span>`).join('');
+    const steps = activeSteps(a);
+    const step = steps.find(k => a[k] == null) || 'result';
+    const i = step === 'result' ? steps.length : steps.indexOf(step);
+    $('#dots').innerHTML = steps.map((_, k) => `<span class="${k <= i ? 'on' : ''}"></span>`).join('');
     $('#back').hidden = !Object.keys(a).length;
-    ({ op: askOp, d: askPeriod, t: askKinds, b: askBudget, result })[step](a);
+    ({ op: askOp, w: askWhen, d: askPeriod, t: askKinds, b: askBudget, result })[step](a);
     fit();
     window.scrollTo(0, 0);
   }
@@ -127,6 +144,18 @@
         <button class="opt wide" type="button" data-op="any">فرقی نمی‌کنه، همه رو مقایسه کن</button>
       </div>`);
     $('#screen').querySelectorAll('[data-op]').forEach(b => b.onclick = () => go({ ...a, op: b.dataset.op }));
+  }
+
+  // only for Samantel: its Friday discount changes which packages are worth buying
+  function askWhen(a) {
+    const fri = isFriday();
+    screen(`<h1 class="fit">کی می‌خوای بخری؟</h1>
+      <p class="hint">سامانتل جمعه‌ها روی خیلی از بسته‌هاش ${fa(FRIDAY_OFF)}٪ تخفیف میده. ${fri ? 'امروز جمعه‌ست.' : 'امروز جمعه نیست.'}</p>
+      <div class="options">
+        <button class="opt${fri ? ' now' : ''}" type="button" data-w="fri"><span class="opt-txt"><b>جمعه‌ها</b><small>با ${fa(FRIDAY_OFF)}٪ تخفیف</small></span></button>
+        <button class="opt${fri ? '' : ' now'}" type="button" data-w="reg"><span class="opt-txt"><b>روز عادی</b><small>قیمت معمولی</small></span></button>
+      </div>`);
+    $('#screen').querySelectorAll('[data-w]').forEach(b => b.onclick = () => go({ ...a, w: b.dataset.w }));
   }
 
   function askPeriod(a) {
@@ -181,10 +210,10 @@
   // ------------------------------------------------------------ result
   function solveFor(op, a) {
     const list = pool(op, a);
-    const res = window.Solver.maxValue(list.map(x => ({ cost: x.p.price, value: x.value, max: x.max })), a.b);
+    const res = window.Solver.maxValue(list.map(x => ({ cost: priceOf(x.p, a), value: x.value, max: x.max })), a.b);
     const picks = Object.entries(res.counts).map(([i, n]) => ({ ...list[i], n }))
       .sort((x, y) => y.value * y.n - x.value * x.n);
-    return { op, n: list.length, picks, mb: res.value, cost: res.cost, cheapest: list.length ? Math.min(...list.map(x => x.p.price)) : 0 };
+    return { op, n: list.length, picks, mb: res.value, cost: res.cost, cheapest: list.length ? Math.min(...list.map(x => priceOf(x.p, a))) : 0 };
   }
 
   function row(x, a) {
@@ -196,23 +225,36 @@
     if (p.fixed_mb && t.has('f')) parts.push(`${vol(p.fixed_mb)} ثابت`);
     // badges: what kind of package, when it can be used, and anything else worth knowing
     const moon = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M10 7.5A4.5 4.5 0 0 1 4.5 2 4.5 4.5 0 1 0 10 7.5z"/></svg>';
-    const badges = [`<span class="bdg">${KIND[p.days] ? KIND[p.days][0] : `${fa(p.days)} روزه`}</span>`];
+    const badges = [`<span class="bdg">${kindOf(p.days)[0]}</span>`];
     if (p.mb) badges.push(`<span class="bdg">${p.night_mb && t.has('n') ? `${vol(p.mb)} ` : ''}۲۴ ساعته</span>`);
     if (p.night_mb && t.has('n')) badges.push(`<span class="bdg hours">${moon}${p.mb ? `${vol(p.night_mb)} ` : 'فقط '}${windowLabel(p.window)}</span>`);
     if (p.fixed_mb && t.has('f')) badges.push(`<span class="bdg">${vol(p.fixed_mb)} اینترنت ثابت خونه</span>`);
+    const off = a.w === 'fri' && p.fri_price;
+    if (off) badges.push(`<span class="bdg fri">تخفیف جمعه ${fa(FRIDAY_OFF)}٪</span>`);
     if (p.note) p.note.split('، ').forEach(x => badges.push(`<span class="bdg">${x}</span>`));
-    const again = n > 1 ? `<small class="again-note">هر ${KIND[p.days][1]} یکی</small>` : '';
+    const again = n > 1 ? `<small class="again-note">هر ${kindOf(p.days)[1]} یکی</small>` : '';
+    const was = off ? `<small class="again-note"><s>${fa(p.price * n)}</s></small>` : '';
     return `<li>
       <span class="what"><b>${n > 1 ? `${fa(n)} تا ` : ''}${parts.join(' + ')}</b><span class="badges">${badges.join('')}</span></span>
-      <span class="price">${fa(p.price * n)} تومن${again}</span>
+      <span class="price">${fa(priceOf(p, a) * n)} تومن${was}${again}</span>
     </li>`;
+  }
+
+  // buying on a normal day: tell how much more Friday would give
+  function waitHint(r, a) {
+    if (r.op !== 'samantel' || a.w !== 'reg') return '';
+    const f = solveFor('samantel', { ...a, w: 'fri' });
+    if (f.mb <= r.mb) return '';
+    return `<p class="sum fri-hint">اگه تا جمعه صبر کنی ${vol(f.mb)} می‌گیری، یعنی ${vol(f.mb - r.mb)} بیشتر.</p>`;
   }
 
   function result(a) {
     const typesLabel = `${fa(a.t.length)} نوع بسته`;
     const pen = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M8 2l2 2-6 6H2V8z"/></svg>';
+    const whenChip = hasSamantel(a) ? `<button type="button" data-edit="w">${a.w === 'fri' ? `جمعه (${fa(FRIDAY_OFF)}٪ تخفیف)` : 'روز عادی'}${pen}</button>` : '';
     const chips = `<div class="answers">
       <button type="button" data-edit="op">${a.op === 'any' ? 'همه اپراتور ها' : OP[a.op].name}${pen}</button>
+      ${whenChip}
       <button type="button" data-edit="d">${PERIOD[a.d].adj}${pen}</button>
       <button type="button" data-edit="t"><span class="clip">${typesLabel}</span>${pen}</button>
       <button type="button" data-edit="b">${toman(a.b)}${pen}</button>
@@ -224,7 +266,7 @@
       if (!r.n) body = `<p class="card-none">با این انتخاب ها بسته‌ای نداره</p>`;
       else if (!r.picks.length) body = `<p class="card-none">با این پول هیچی نمیشه خرید. ارزون‌ترینش ${fa(r.cheapest)} تومنه</p>`;
       else body = `<ul class="buy">${r.picks.map(x => row(x, a)).join('')}</ul>
-        <p class="sum">جمعش ${fa(r.cost)} تومن${a.b - r.cost >= 1000 ? ` · ${toman(a.b - r.cost)} می‌مونه` : ''}</p>`;
+        <p class="sum">جمعش ${fa(r.cost)} تومن${a.b - r.cost >= 1000 ? ` · ${toman(a.b - r.cost)} می‌مونه` : ''}</p>${waitHint(r, a)}`;
       return `<section class="card${k === 0 && r.mb ? ' first' : ''}">
         <h2 class="fit">${dot(r.op)}<span class="op-name">${OP[r.op].name}</span><span class="total">${r.mb ? vol(r.mb) : '—'}</span></h2>
         ${body}
